@@ -28,11 +28,24 @@ export const onNavigate = (pathname) => {
        // Si la ruta actual coincide con una ruta definida en el objeto routes, entonces routes[pathname] devolverá el componente o función correspondiente.
        //El contenido del componente asociado a la ruta actual se mostrará dentro del elemento con id "rootDiv".
        rootDiv.appendChild(routes[pathname]());
-    }
+    };
     
 /*Se obtiene el componente correspondiente a la ruta actual y se agrega al DOM para mostrar el contenido
  correcto en la página web según la ruta actual del navegador.*/
 const component = routes[window.location.pathname];
+
+// Recuperar y remplazar el contenido de rootDiv cuando navega hacia  atrás  o hacia adelante del historial(las saca del historial)
+/*window.addEventListener('popstate', () => {
+  const paginas = routes[window.location.pathname];
+  rootDiv.removeChild(rootDiv.firstChild);
+  rootDiv.appendChild(paginas(onNavigate));
+  console.log(window.location.pathname);
+}); */
+window.onpopstate = () => {
+  rootDiv.removeChild(rootDiv.firstChild);
+  rootDiv.appendChild(component());
+};
+// Agrega el contenido a la pantalla
 rootDiv.appendChild(component());
 //console.log(component);
 
