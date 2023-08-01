@@ -1,14 +1,15 @@
 // Este es el punto de entrada de tu aplicacion
 // rauter , gestiona las rutas
-import { signIn } from './components/signIn';
+//import { signIn } from './components/signIn';
 import { signUp } from './components/signUp';
-import { wall } from './components/wall';
+//import { wall } from './components/wall';
 
 const rootDiv = document.getElementById('root');
+//objeto para acceder a todas las rutas
 const routes = {
-  '/': signIn,
+  //'/': signIn,
   '/signup': signUp,
-  '/wall': wall,
+  //'/wall': wall,
 };
 //onNavigate es una función para cambiar la URL actual del navegador cuando nuestro usuario haga clic , actualiza la URL sin recargar completamente la página.
 //pathname representa la nueva ruta o URL a la que deseamos navegar.
@@ -27,7 +28,8 @@ export const onNavigate = (pathname) => {
 
        // Si la ruta actual coincide con una ruta definida en el objeto routes, entonces routes[pathname] devolverá el componente o función correspondiente.
        //El contenido del componente asociado a la ruta actual se mostrará dentro del elemento con id "rootDiv".
-       rootDiv.appendChild(routes[pathname]());
+       //se accede al objeto
+       rootDiv.appendChild(routes[pathname](onNavigate));   //routes[/signUp]= singUp(onNavigate)
     };
     
 /*Se obtiene el componente correspondiente a la ruta actual y se agrega al DOM para mostrar el contenido
@@ -43,10 +45,10 @@ const component = routes[window.location.pathname];
 }); */
 window.onpopstate = () => {
   rootDiv.removeChild(rootDiv.firstChild);
-  rootDiv.appendChild(component());
+  rootDiv.appendChild(component(onNavigate));
 };
-// Agrega el contenido a la pantalla
-rootDiv.appendChild(component());
+// Agrega el contenido a la pantalla , se ejecuta la función onNavigate
+rootDiv.appendChild(component(onNavigate));
 //console.log(component);
 
 
