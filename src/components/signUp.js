@@ -1,6 +1,11 @@
 
 export const signUp = (onNavigate) => {
-const singUpDiv = document.createElement('div');
+const signUpDiv = document.createElement('div');
+const imgContainerSignUp = document.createElement('div');
+imgContainerSignUp.classList.add('imgContainer');
+const imageSignUp = document.createElement('img');
+imageSignUp.classList.add('imageSignUp');
+imageSignUp.src = '../image/signUp.jpg';
 const signUpText = document.createElement('h3');
 
 
@@ -34,16 +39,18 @@ signUpButton.addEventListener('click', () => {
   onNavigate('/wall');
 });
 
-singUpDiv.appendChild(signUpText);
-singUpDiv.appendChild(usersName);
-singUpDiv.appendChild(usersEmail);
-singUpDiv.appendChild(usersPassword);
-singUpDiv.appendChild(termsCheckbox);
-singUpDiv.appendChild(termsText);
-singUpDiv.appendChild(signUpButton);
-singUpDiv.appendChild(doYouHaveAnAccount);
-singUpDiv.appendChild(backToLogin);
-return singUpDiv;
+imgContainerSignUp.appendChild(imageSignUp);
+signUpDiv.appendChild(imgContainerSignUp);
+signUpDiv.appendChild(signUpText);
+signUpDiv.appendChild(usersName);
+signUpDiv.appendChild(usersEmail);
+signUpDiv.appendChild(usersPassword);
+signUpDiv.appendChild(termsCheckbox);
+signUpDiv.appendChild(termsText);
+signUpDiv.appendChild(signUpButton);
+signUpDiv.appendChild(doYouHaveAnAccount);
+signUpDiv.appendChild(backToLogin);
+return signUpDiv;
 
 
 
