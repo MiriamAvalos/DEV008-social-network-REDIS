@@ -49,28 +49,3 @@
 
 }
 
-.singUpDiv{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column; 
-
-}
-
-
-.imgContainerSignUp{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5%;
-    max-width: 90%;
-    max-height: 90%; 
-}
-
-.imageSignUp{
-    margin-top: 5%;
-    max-width: 90%;
-    max-height: 90%; 
-
-
-}
