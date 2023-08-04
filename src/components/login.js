@@ -1,6 +1,6 @@
 // Se crean los elementos de HTML
-import { onNavigate } from '../main.js';
-export const login = () => {
+
+export const login = (onNavigate) => {
 
 // Se crean los elementos de HTML
   
@@ -46,7 +46,7 @@ loginButton.addEventListener('click', () => {
 });
 
 signUpButton.addEventListener('click', () => {
-    onNavigate('/signup');
+    onNavigate('/register');
   });
 
 

@@ -1,13 +1,13 @@
 // Este es el punto de entrada de tu aplicacion
 // rauter , gestiona las rutas
-//import { signIn } from './components/signIn';
+import { login } from './components/login';
 import { register } from './components/register';
 //import { wall } from './components/wall';
 
 const rootDiv = document.getElementById('root');
 //objeto para acceder a todas las rutas
 const routes = {
-  //'/': login,
+  '/': login,
   '/register': register,
   //'/wall': wall,
 };
