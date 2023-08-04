@@ -1,44 +1,42 @@
 
 export const register = (onNavigate) => {
-const registerMain = document.createElement('main'); //div padre
+const registerMain = document.createElement('main'); 
 registerMain.classList.add('registerMain');
 
 
-
 const imageRegister = document.createElement('img');
-imageRegister.classList.add('imageRegister'); //imagen que se inserta en main
+imageRegister.classList.add('imageRegister'); 
 imageRegister.src = '../image/imageRegister.png';
 
-const registerTextDiv = document.createElement('div'); //div h2
+const registerTextDiv = document.createElement('div'); 
 registerTextDiv.classList.add('registerTextDiv');
-const registerText = document.createElement('h3'); //texto de registrate para header
+const registerText = document.createElement('h3'); 
 
 const formRegister = document.createElement('form');
 formRegister.classList.add('formRegister');
-const usersName = document.createElement('input'); //nombre usuario
+const usersName = document.createElement('input'); 
 usersName.classList.add('inputRegister');
-const usersEmail = document.createElement('input'); //correo
+const usersEmail = document.createElement('input');
 usersEmail.classList.add('inputRegister');
-const usersPassword = document.createElement('input'); //contraseña
+const usersPassword = document.createElement('input'); 
 usersPassword.classList.add('inputRegister');
 const termsDiv = document.createElement('div');
 termsDiv.classList.add('termsDiv');
-const termsCheckbox = document.createElement('input');  //cuadrito de selección
+const termsCheckbox = document.createElement('input'); 
 termsCheckbox.classList.add('termsCheckBox');
-const termsText = document.createElement('label');   //acepto los terminos y condiciones
+const termsText = document.createElement('label'); 
 termsText.classList.add('pTerms');
 const privacyText = document.createElement('a');  
 privacyText.classList.add('privacyText');
 
 
-
-const registerButton = document.createElement('button');  //crear cuenta
+const registerButton = document.createElement('button');  
 registerButton.classList.add('registerButton');
 const footerRegister = document.createElement('footer');
 footerRegister.classList.add('footerRegister');
-const doYouHaveAnAccount = document.createElement('p'); //ya tienes una cuenta?
+const doYouHaveAnAccount = document.createElement('p'); 
 doYouHaveAnAccount.classList.add('pFooter');
-const backToLogin = document.createElement('a');  //ir de nuevo a iniciar sesión
+const backToLogin = document.createElement('a');  
 backToLogin.classList.add('backToLogin');
 
 
@@ -66,7 +64,6 @@ registerTextDiv.appendChild(registerText);
 formRegister.appendChild(usersName);
 formRegister.appendChild(usersEmail);
 formRegister.appendChild(usersPassword);
-
 termsDiv.appendChild(termsCheckbox);
 termsDiv.appendChild(termsText);
 formRegister.appendChild(termsDiv);
