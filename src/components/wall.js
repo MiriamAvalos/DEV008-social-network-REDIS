@@ -1,5 +1,5 @@
-import { onNavigate } from '../main.js';
-export const wall = () => {
+
+export const wall = (onNavigate) => {
 
 const wallDiv = document.createElement('div');
 const signOutButton = document.createElement('button');

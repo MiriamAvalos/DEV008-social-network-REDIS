@@ -2,13 +2,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: black;
+
 }
 
+
+html {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(253, 253, 253, 0.973);
+}
+
+
 #root {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    
+    width: 100%;
+    height: 100%;
 }
 
 .signInDiv {
@@ -48,29 +57,147 @@
     margin-top: 5%;
 
 }
+@font-face{
+    font-family: IBMPlexSans-Regular;
+    src:url(tipografías/IBMPlexSans-Regular.ttf);
+    }
+        @font-face{
+            font-family: IBMPlexSans-Medium;
+            src:url(tipografías/IBMPlexSans-Medium.ttf);
+            }
+            @font-face{
+                font-family: IBMPlexSans-Light;
+                src:url(tipografías/IBMPlexSans-Light.ttf);
+                }
+ 
 
-.singUpDiv{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column; 
+            .registerMain{
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100%;
+                width: 100%;
+                
+                
+              
+            }
+            
+            
+
+            .imageRegister{
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: %;
+                max-width: 100%;
+                max-height: 100%;
+                padding:6%;
+                border-radius: 15px;
+                
+            }
+
+           
+h3{
+    font-family: IBMPlexSans-Light;
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-top: 5%;
+    margin-bottom: 17%;
+}
+
+.formRegister{
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+               
 
 }
 
+.inputRegister{
+    width: 325px;
+    height: 50px;
+    font-size: 100%;
+    border-radius: 6px;
+    margin: 1.5vw 0;
+    
+        /*border: solid 1.5px transparent;  */
+        padding: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        background-color: #fffafa; /* Color de fondo gris */
 
-.imgContainerSignUp{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5%;
-    max-width: 90%;
-    max-height: 90%; 
 }
 
-.imageSignUp{
-    margin-top: 5%;
-    max-width: 90%;
-    max-height: 90%; 
+.termsDiv{
+    display: flex;
+    align-items: center;
+    max-width: 80%;
+    font-weight: 600;
+    margin:10px;
+    margin-top: 15px;
+}
 
+.pTerms{
+    font-family: IBMPlexSans-Light;
+    font-size: 12px;
 
+}
+.privacyText{
+    font-family: IBMPlexSans-Medium;
+    font-size: 12px;
+
+}
+
+.termsCheckBox{
+    width: 10%;
+    margin: 0 1vw 2.5vw;
+    cursor: pointer;
+  
+}
+
+.registerButton{
+    cursor: pointer;
+    background: #6FB94C;
+    border: none;
+    width: 160px;
+    height: 47px;
+    border-radius: 10px;
+    margin-top: 35px;
+    font-family: IBMPlexSans-Medium;
+    font-size:19px;
+    color:#fffafa;
+    font-weight:lighter;
+}
+
+.registerButton:hover {
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  
+  
+  
+.footerRegister{
+    display: flex;
+    align-items: center;
+    max-width: 80%;
+    font-weight: 600;
+    margin:10px;
+    margin-top: 100px;
+
+}
+
+.pFooter{
+    
+    font-family: IBMPlexSans-Light;
+    font-size: 15px;
+    
+}
+
+.backToLogin{
+    cursor: pointer;
+    margin: 4px;
+    font-family: IBMPlexSans-Medium;
+    font-size: 15px;
+    color: #CE7F46;
 }
