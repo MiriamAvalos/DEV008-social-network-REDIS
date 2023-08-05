@@ -1,67 +1,67 @@
-// Se crean los elementos de HTML
-
 export const login = (onNavigate) => {
+  const loginMain = document.createElement('main');
+  loginMain.classList.add('loginMain');
 
-// Se crean los elementos de HTML
-  
-const loginDiv = document.createElement('div');
-loginDiv.classList.add('signInDiv');
-  const imgContainer = document.createElement('div');
-  imgContainer.classList.add('imgContainer');
   const imageLogin = document.createElement('img');
-  imageLogin.classList.add('imageSignIn');
-  imageLogin.src = '../image/imagesignIn.jpg';
-  
+  imageLogin.classList.add('imageLogin');
+  imageLogin.src = '../image/login.png';
+
+  const loginTextDiv = document.createElement('div');
+  loginTextDiv.classList.add('loginTextDiv');
+  const loginText = document.createElement('h1');
+  loginText.classList.add('loginText');
+
   const formLogin = document.createElement('form');
-  formLogin.classList.add('formSignIn');
-  const description = document.createElement('h1');
-  description.classList.add('description');
-  const sentence = document.createElement('h2');
-  sentence.classList.add('sentence');
-
-  const email = document.createElement('input');
-  email.classList.add('email');
-  const password = document.createElement('input');
-  password.classList.add('password');
+  formLogin.classList.add('formLogin');
+  const sentenceLogin = document.createElement('h2');
+  sentenceLogin.classList.add('sentence');
+  const emaiLogin = document.createElement('input');
+  emaiLogin.classList.add('inputLogin');
+  const passwordLogin = document.createElement('input');
+  passwordLogin.classList.add('inputLogin');
   const loginButton = document.createElement('button');
+  loginButton.classList.add('loginButton');
   const googleButton = document.createElement('button');
-  const dontYouHaveAnAccount = document.createElement('p');
-  dontYouHaveAnAccount.classList.add('dontYouHaceAnAccount');
-  const signUpButton = document.createElement('button');
+  googleButton.classList.add('googleButton');
 
-  // Se inserta el nombre a los elementos creados
-  description.textContent =
+  const footerLogin = document.createElement('footer');
+  footerLogin.classList.add('footerLogin');
+  const DontHaveAnAccount = document.createElement('p');
+  DontHaveAnAccount.classList.add('pFooterLogin');
+  const goToRegister = document.createElement('a');
+  goToRegister.classList.add('goToRegister');
+
+  loginText.textContent =
     'Únete a nuestra red de apoyo y reduce el derroche alimentario.';
-  email.placeholder = 'Correo Electrónico';
-  password.placeholder = 'Contraseña';
+  sentenceLogin.textContent = '¡Donde come uno, comen dos!';
+  emaiLogin.placeholder = 'Correo Electrónico';
+  passwordLogin.placeholder = 'Contraseña';
   loginButton.textContent = 'Inicia sesión';
   googleButton.textContent = 'Acceder con Google';
-  dontYouHaveAnAccount.textContent = '¿No tienes una cuenta?';
-  signUpButton.textContent = 'Registrate';
+  DontHaveAnAccount.textContent = '¿No tienes una cuenta?';
+  goToRegister.textContent = 'Registrate';
 
-// Se crean los eventos que permitiran la navegación
+  // Se crean los eventos que permitiran la navegación
 
-loginButton.addEventListener('click', () => {
-  onNavigate('/wall');
-});
+  loginButton.addEventListener('click', () => {
+    onNavigate('/wall');
+  });
 
-signUpButton.addEventListener('click', () => {
+  goToRegister.addEventListener('click', () => {
     onNavigate('/register');
   });
 
-
-  // Se insertan los hijos
-  formLogin.appendChild(email);
-  formLogin.appendChild(password);
+  loginTextDiv.appendChild(loginText);
+  formLogin.appendChild(emaiLogin);
+  formLogin.appendChild(passwordLogin);
   formLogin.appendChild(loginButton);
   formLogin.appendChild(googleButton);
-  formLogin.appendChild(dontYouHaveAnAccount);
-  formLogin.appendChild(signUpButton);
-  imgContainer.appendChild(imageLogin);
-  loginDiv.appendChild(imgContainer);
-  loginDiv.appendChild(description);
-  loginDiv.appendChild(formLogin);
+  footerLogin.appendChild(DontHaveAnAccount);
+  footerLogin.appendChild(goToRegister);
+  loginMain.appendChild(imageLogin);
+  loginMain.appendChild(loginTextDiv);
+  loginMain.appendChild(formLogin);
+  loginMain.appendChild(footerLogin);
 
-return loginDiv;
-
-}
+  return loginMain;
+};
