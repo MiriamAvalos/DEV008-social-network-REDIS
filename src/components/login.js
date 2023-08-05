@@ -17,12 +17,18 @@ export const login = (onNavigate) => {
   sentenceLogin.classList.add('sentence');
   const emaiLogin = document.createElement('input');
   emaiLogin.classList.add('inputLogin');
+  emaiLogin.classList.add('emaiLogin');
   const passwordLogin = document.createElement('input');
   passwordLogin.classList.add('inputLogin');
+  passwordLogin.classList.add('passwordLogin');
   const loginButton = document.createElement('button');
   loginButton.classList.add('loginButton');
   const googleButton = document.createElement('button');
+
   googleButton.classList.add('googleButton');
+  const imageGoogle = document.createElement('img');
+  imageGoogle.classList.add('imageGoogle');
+  imageGoogle.src = '../image/google.png';
 
   const footerLogin = document.createElement('footer');
   footerLogin.classList.add('footerLogin');
@@ -31,7 +37,8 @@ export const login = (onNavigate) => {
   const goToRegister = document.createElement('a');
   goToRegister.classList.add('goToRegister');
 
-  loginText.textContent = '"Únete a nuestra red de apoyo y reduce el derroche alimentario."';
+  loginText.textContent =
+    '"Únete a nuestra red de apoyo y reduce el derroche alimentario."';
   sentenceLogin.textContent = '¡Donde come uno, comen dos!';
   emaiLogin.placeholder = 'Correo Electrónico';
   passwordLogin.placeholder = 'Contraseña';
@@ -55,6 +62,9 @@ export const login = (onNavigate) => {
   formLogin.appendChild(passwordLogin);
   formLogin.appendChild(loginButton);
   formLogin.appendChild(googleButton);
+  googleButton.appendChild(imageGoogle);
+  // insertar primero icono y despues texto, utilice  flex-direction: row-reverse; en CSS pero insertBefore lo resuelve.
+  //googleButton.insertBefore(imageGoogle, googleButton.firstChild);
   footerLogin.appendChild(DontHaveAnAccount);
   footerLogin.appendChild(goToRegister);
   loginMain.appendChild(imageLogin);

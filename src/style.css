@@ -12,134 +12,179 @@ html {
 }
 
 @font-face {
-    font-family: IBMPlexSans-Regular;
-    src: url(tipografías/IBMPlexSans-Regular.ttf);
-  }
-  @font-face {
-    font-family: IBMPlexSans-Medium;
-    src: url(tipografías/IBMPlexSans-Medium.ttf);
-  }
-  @font-face {
-    font-family: IBMPlexSans-Light;
-    src: url(tipografías/IBMPlexSans-Light.ttf);
-  }
-  @font-face {
-    font-family: IBMPlexSans-Bold;
-    src: url(tipografías/IBMPlexSans-Bold.ttf);
-  }
-  
+  font-family: IBMPlexSans-Regular;
+  src: url(tipografías/IBMPlexSans-Regular.ttf);
+}
+@font-face {
+  font-family: IBMPlexSans-Medium;
+  src: url(tipografías/IBMPlexSans-Medium.ttf);
+}
+@font-face {
+  font-family: IBMPlexSans-Light;
+  src: url(tipografías/IBMPlexSans-Light.ttf);
+}
+@font-face {
+  font-family: IBMPlexSans-Bold;
+  src: url(tipografías/IBMPlexSans-Bold.ttf);
+}
+
 #root {
   width: 100%;
   height: 100%;
 }
- 
 
 .MainComponents {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
 
+/* LOGIN */
 
-   /* LOGIN */
+.imageLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 6%;
+  border-radius: 15px;
+}
 
-   .imageLogin {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-    max-height: 100%;
-    padding: 6%;
-    border-radius: 15px;
-  }
+.loginTextDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
-   .loginTextDiv{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        
-   }
+h1 {
+  display: flex;
+  padding: 0 40px;
+  font-family: IBMPlexSans-Light;
+  font-size: 17px;
+}
 
-   h1 {
-    
-    font-family: IBMPlexSans-Light;
-    font-size:small;
-   
-    
-  }
+.sentence {
+  font-family: IBMPlexSans-Bold;
+  font-size: 19px;
+  margin-top: 20px;
+}
 
-  .sentence{
-    font-family:  IBMPlexSans-Bold;
-    font-size: 16px;
-    margin-top: 25px;
-    
-   
-  }
-
-  
 .formLogin {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
-  .inputLogin{
-    width: 325px;
-    height: 50px;
-    font-size: 100%;
-    border-radius: 6px;
-    margin: 1.5vw 0;
-  
-    /*border: solid 1.5px transparent;  */
-    padding: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    background-color: #fffafa; /* Color de fondo gris */
-  }
+.inputLogin {
+  width: 325px;
+  height: 50px;
+  font-size: 100%;
+  border-radius: 6px;
+  margin: 1.5vw 0;
 
-  .loginButton {
-    cursor: pointer;
-    background: #6fb94c;
-    border: none;
-    width: 160px;
-    height: 47px;
-    border-radius: 10px;
-    margin-top: 35px;
-    font-family: IBMPlexSans-Medium;
-    font-size: 19px;
-    color: #fffafa;
-    font-weight: lighter;
-  }
-  
-  .loginButton:hover {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-  }
+  /*border: solid 1.5px transparent;  */
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fffafa; /* Color de fondo gris */
+}
 
+.emaiLogin {
+  margin-top: 0px;
+}
+.passwordLogin {
+  margin-top: 9px;
+}
+
+.loginButton {
+  cursor: pointer;
+  background: #6fb94c;
+  border: none;
+  width: 175px;
+  height: 49px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-family: IBMPlexSans-Medium;
+  font-size: 19px;
+  color: #fffafa;
+  font-weight: lighter;
+}
+
+.loginButton:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.imageGoogle {
+  width: 30px;
+  padding-right: 10px;
+}
+
+.googleButton {
+  display: flex;
+  cursor: pointer;
+  background-color: white;
+  width: 175px;
+  height: 49px;
+  border: 1px solid #0d0e0d75;
+  border-radius: 10px;
+  margin-top: 15px;
+  color: black;
+  font-family: IBMPlexSans-Medium;
+  font-weight: lighter;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row-reverse;
+  font-size: 14px;
+}
+
+.googleButton:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.footerLogin {
+  display: flex;
+  align-items: center;
+  max-width: 80%;
+  font-weight: 600;
+  margin: 10px;
+  margin-top: 100px;
+}
+
+.pFooterLogin {
+  font-family: IBMPlexSans-Light;
+  font-size: 15px;
+}
+
+.goToRegister {
+  cursor: pointer;
+  margin: 4px;
+  font-family: IBMPlexSans-Medium;
+  font-size: 15px;
+  color: #ce7f46;
+}
 
 /* REGISTER  */
 
 .imageRegister {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-    max-height: 100%;
-    padding: 6%;
-    border-radius: 15px;
-  }
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 6%;
+  border-radius: 15px;
+}
 
 h3 {
   font-family: IBMPlexSans-Light;
   font-size: 24px;
   letter-spacing: 1px;
-  margin-top: 5%;
   margin-bottom: 17%;
 }
 
@@ -193,7 +238,7 @@ h3 {
   background: #6fb94c;
   border: none;
   width: 160px;
-  height: 47px;
+  height: 49px;
   border-radius: 10px;
   margin-top: 35px;
   font-family: IBMPlexSans-Medium;
