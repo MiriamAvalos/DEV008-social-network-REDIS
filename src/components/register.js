@@ -1,6 +1,6 @@
 export const register = (onNavigate) => {
   const registerMain = document.createElement('main');
-  registerMain.classList.add('registerMain');
+  registerMain.classList.add('MainComponents');
 
   const imageRegister = document.createElement('img');
   imageRegister.classList.add('imageRegister');

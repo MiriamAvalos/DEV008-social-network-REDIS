@@ -1,6 +1,6 @@
 export const login = (onNavigate) => {
   const loginMain = document.createElement('main');
-  loginMain.classList.add('loginMain');
+  loginMain.classList.add('MainComponents');
 
   const imageLogin = document.createElement('img');
   imageLogin.classList.add('imageLogin');
@@ -31,8 +31,7 @@ export const login = (onNavigate) => {
   const goToRegister = document.createElement('a');
   goToRegister.classList.add('goToRegister');
 
-  loginText.textContent =
-    'Únete a nuestra red de apoyo y reduce el derroche alimentario.';
+  loginText.textContent = '"Únete a nuestra red de apoyo y reduce el derroche alimentario."';
   sentenceLogin.textContent = '¡Donde come uno, comen dos!';
   emaiLogin.placeholder = 'Correo Electrónico';
   passwordLogin.placeholder = 'Contraseña';
@@ -60,6 +59,7 @@ export const login = (onNavigate) => {
   footerLogin.appendChild(goToRegister);
   loginMain.appendChild(imageLogin);
   loginMain.appendChild(loginTextDiv);
+  loginMain.appendChild(sentenceLogin);
   loginMain.appendChild(formLogin);
   loginMain.appendChild(footerLogin);
 
