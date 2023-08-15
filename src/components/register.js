@@ -1,3 +1,5 @@
+import { addNewUser } from '../lib/authUser';
+
 export const register = (onNavigate) => {
   const registerMain = document.createElement('main');
   registerMain.classList.add('MainComponents');
@@ -51,8 +53,22 @@ export const register = (onNavigate) => {
     onNavigate('/');
   });
 
-  registerButton.addEventListener('click', () => {
-    onNavigate('/wall');
+  registerButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    
+
+    addNewUser(usersEmail.value, usersPassword.value).then((userCredential) => {
+       
+       onNavigate('/wall');
+
+    }).catch((error) => {
+      if (error.code === "auth/invalid-email") {
+        alert('Correo invalido');
+        } else if (error.code === "auth/weak-password") {
+        alert("La contraseña debe contener al menos 6 digitos");
+      }
+      
+    });
   });
 
   registerTextDiv.appendChild(registerText);

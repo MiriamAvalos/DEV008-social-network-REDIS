@@ -44,8 +44,7 @@ const component = routes[window.location.pathname];
   console.log(window.location.pathname);
 }); */
 window.onpopstate = () => {
-  rootDiv.removeChild(rootDiv.firstChild);
-  rootDiv.appendChild(component(onNavigate));
+  onNavigate(window.location.pathname)
 };
 // Agrega el contenido a la pantalla , se ejecuta la función onNavigate
 rootDiv.appendChild(component(onNavigate));
