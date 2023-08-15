@@ -46,8 +46,16 @@ export const register = (onNavigate) => {
   termsText.textContent = 'Acepto los';
   privacyText.textContent = ' Términos, Condiciones y Política de Privacidad.';
   registerButton.textContent = 'Crear cuenta';
+  const ErrorRegister = document.createElement('div');
+  ErrorRegister.classList.add('ErrorRegister');
   doYouHaveAnAccount.textContent = '¿Ya tienes una cuenta?';
   backToLogin.textContent = ' Inicia sesión';
+
+  // Reemplazar elementos de contraseña por *
+  usersPassword.addEventListener('keyup', (e) => {
+    const valueInputPassword = e.target.value;
+    usersPassword.value = valueInputPassword.replace(/\w/g, '•');
+  });
 
   backToLogin.addEventListener('click', () => {
     onNavigate('/');
@@ -55,19 +63,19 @@ export const register = (onNavigate) => {
 
   registerButton.addEventListener('click', (event) => {
     event.preventDefault();
-    
 
     addNewUser(usersEmail.value, usersPassword.value).then((userCredential) => {
-       
-       onNavigate('/wall');
-
+      onNavigate('/wall');
     }).catch((error) => {
-      if (error.code === "auth/invalid-email") {
-        alert('Correo invalido');
-        } else if (error.code === "auth/weak-password") {
-        alert("La contraseña debe contener al menos 6 digitos");
+      const textErrorRegister = document.createElement('p');
+      textErrorRegister.classList.add('textErrorRegister');
+
+      if (error.code === 'auth/invalid-email') {
+        textErrorRegister.textContent = 'Por favor ingresa un correo válido.';
+      } else if (error.code === 'auth/weak-password') {
+        textErrorRegister.textContent = 'La contraseña debe contener al menos 6 digitos';
       }
-      
+      ErrorRegister.appendChild(textErrorRegister);
     });
   });
 
@@ -85,6 +93,7 @@ export const register = (onNavigate) => {
   registerMain.appendChild(imageRegister);
   registerMain.appendChild(registerTextDiv);
   registerMain.appendChild(formRegister);
+  registerMain.appendChild(ErrorRegister);
   registerMain.appendChild(footerRegister);
 
   return registerMain;

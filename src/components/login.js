@@ -37,8 +37,7 @@ export const login = (onNavigate) => {
   const goToRegister = document.createElement('a');
   goToRegister.classList.add('goToRegister');
 
-  loginText.textContent =
-    '"Únete a nuestra red de apoyo y reduce el derroche alimentario."';
+  loginText.textContent = '"Únete a nuestra red de apoyo y reduce el derroche alimentario."';
   sentenceLogin.textContent = '¡Donde come uno, comen dos!';
   emaiLogin.placeholder = 'Correo Electrónico';
   passwordLogin.placeholder = 'Contraseña';
@@ -46,6 +45,12 @@ export const login = (onNavigate) => {
   googleButton.textContent = 'Acceder con Google';
   DontHaveAnAccount.textContent = '¿No tienes una cuenta?';
   goToRegister.textContent = 'Registrate';
+
+  // Reemplazar elementos de contraseña por *
+  passwordLogin.addEventListener('keyup', (e) => {
+    const valueInputPasswordLogin = e.target.value;
+    passwordLogin.value = valueInputPasswordLogin.replace(/\w/g, '•');
+  });
 
   // Se crean los eventos que permitiran la navegación
 
@@ -64,7 +69,7 @@ export const login = (onNavigate) => {
   formLogin.appendChild(googleButton);
   googleButton.appendChild(imageGoogle);
   // insertar primero icono y despues texto, utilice  flex-direction: row-reverse; en CSS pero insertBefore lo resuelve.
-  //googleButton.insertBefore(imageGoogle, googleButton.firstChild);
+  // googleButton.insertBefore(imageGoogle, googleButton.firstChild);
   footerLogin.appendChild(DontHaveAnAccount);
   footerLogin.appendChild(goToRegister);
   loginMain.appendChild(imageLogin);
