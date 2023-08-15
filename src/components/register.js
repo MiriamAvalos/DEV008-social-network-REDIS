@@ -67,13 +67,19 @@ export const register = (onNavigate) => {
     addNewUser(usersEmail.value, usersPassword.value).then((userCredential) => {
       onNavigate('/wall');
     }).catch((error) => {
+// Eliminar mensaje de error anterior, si existe
+const textErrorRemove = document.querySelector('.textErrorRegister');
+if (textErrorRemove) {
+  ErrorRegister.removeChild(textErrorRemove);
+}
+
       const textErrorRegister = document.createElement('p');
       textErrorRegister.classList.add('textErrorRegister');
 
       if (error.code === 'auth/invalid-email') {
-        textErrorRegister.textContent = 'Por favor ingresa un correo válido.';
+        textErrorRegister.textContent = 'Por favor, ingresa una dirección de correo válida.';
       } else if (error.code === 'auth/weak-password') {
-        textErrorRegister.textContent = 'La contraseña debe contener al menos 6 digitos';
+        textErrorRegister.textContent = 'La contraseña debe contener al menos 6 dígitos.';
       }
       ErrorRegister.appendChild(textErrorRegister);
     });

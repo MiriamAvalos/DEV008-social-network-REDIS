@@ -274,6 +274,18 @@ h3 {
 }
 
 
+.ErrorRegister{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:black;
+  margin-top: 25px;
+
+}
+
 .textErrorRegister{
+  
+  font-family: IBMPlexSans-Medium;
   color:red;
+  
 }
