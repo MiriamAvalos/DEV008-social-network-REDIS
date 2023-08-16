@@ -1,3 +1,5 @@
+import { signInUserNew } from '../lib/authUser';
+
 export const login = (onNavigate) => {
   const loginMain = document.createElement('main');
   loginMain.classList.add('MainComponents');
@@ -43,6 +45,8 @@ export const login = (onNavigate) => {
   passwordLogin.placeholder = 'Contraseña';
   loginButton.textContent = 'Inicia sesión';
   googleButton.textContent = 'Acceder con Google';
+  const ErrorLogin = document.createElement('div');
+  ErrorLogin.classList.add('ErrorRegisterLogin');
   DontHaveAnAccount.textContent = '¿No tienes una cuenta?';
   goToRegister.textContent = 'Registrate';
 
@@ -53,14 +57,41 @@ export const login = (onNavigate) => {
   });
 
   // Se crean los eventos que permitiran la navegación
-
-  loginButton.addEventListener('click', () => {
-    onNavigate('/wall');
-  });
-
   goToRegister.addEventListener('click', () => {
     onNavigate('/register');
   });
+
+
+  loginButton.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    signInUserNew(emaiLogin.value, passwordLogin.value).then((userCredential) => {
+      onNavigate('/wall');
+    }).catch((error) => {
+
+      // Eliminar mensaje de error anterior, si existe
+const textErrorRemoveLogin = document.querySelector('.textErrorRegisterLogin');
+if (textErrorRemoveLogin) {
+  ErrorLogin.removeChild(textErrorRemoveLogin);
+}
+
+      const textErrorLogin = document.createElement('p');
+      textErrorLogin.classList.add('textErrorRegisterLogin');
+
+      if (error.code === 'auth/invalid-email') {
+        textErrorLogin.textContent = 'Por favor, ingresa una dirección de correo válida.';
+      } else if (error.code === 'auth/wrong-password') {
+        textErrorLogin.textContent = 'Contraseña inválida';
+      } else if (error.code === 'auth/user-not-found'){
+        textErrorLogin.textContent = 'Usuario no encontrado, verifique su correo y contraseña.';
+      } else if (error.code === 'auth/missing-password'){
+        textErrorLogin.textContent = 'Por favor, ingrese su contraseña.';
+      }
+      ErrorLogin.appendChild(textErrorLogin);
+      console.log("Error code:", error.code);
+    });
+  });
+
 
   loginTextDiv.appendChild(loginText);
   formLogin.appendChild(emaiLogin);
@@ -76,6 +107,7 @@ export const login = (onNavigate) => {
   loginMain.appendChild(loginTextDiv);
   loginMain.appendChild(sentenceLogin);
   loginMain.appendChild(formLogin);
+  loginMain.appendChild( ErrorLogin);
   loginMain.appendChild(footerLogin);
 
   return loginMain;

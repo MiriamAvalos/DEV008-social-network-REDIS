@@ -274,7 +274,8 @@ h3 {
 }
 
 
-.ErrorRegister{
+.ErrorRegisterLogin{
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -283,9 +284,12 @@ h3 {
 
 }
 
-.textErrorRegister{
-  
+.textErrorRegisterLogin{
+  display:flex;
+  align-items: center;
+  justify-content: center;
   font-family: IBMPlexSans-Medium;
   color:red;
+  font-size: 14px;
   
 }

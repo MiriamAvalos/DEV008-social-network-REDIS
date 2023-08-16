@@ -47,7 +47,7 @@ export const register = (onNavigate) => {
   privacyText.textContent = ' Términos, Condiciones y Política de Privacidad.';
   registerButton.textContent = 'Crear cuenta';
   const ErrorRegister = document.createElement('div');
-  ErrorRegister.classList.add('ErrorRegister');
+  ErrorRegister.classList.add('ErrorRegisterLogin');
   doYouHaveAnAccount.textContent = '¿Ya tienes una cuenta?';
   backToLogin.textContent = ' Inicia sesión';
 
@@ -68,21 +68,25 @@ export const register = (onNavigate) => {
       onNavigate('/wall');
     }).catch((error) => {
 // Eliminar mensaje de error anterior, si existe
-const textErrorRemove = document.querySelector('.textErrorRegister');
+const textErrorRemove = document.querySelector('.textErrorRegisterLogin');
 if (textErrorRemove) {
   ErrorRegister.removeChild(textErrorRemove);
 }
 
       const textErrorRegister = document.createElement('p');
-      textErrorRegister.classList.add('textErrorRegister');
+      textErrorRegister.classList.add('textErrorRegisterLogin');
 
       if (error.code === 'auth/invalid-email') {
         textErrorRegister.textContent = 'Por favor, ingresa una dirección de correo válida.';
       } else if (error.code === 'auth/weak-password') {
         textErrorRegister.textContent = 'La contraseña debe contener al menos 6 dígitos.';
+      } else if (error.code=== 'auth/missing-password'){
+        textErrorRegister.textContent = 'Ingrese su contraseña.';
       }
       ErrorRegister.appendChild(textErrorRegister);
+      console.log("Error code:", error.code);
     });
+   
   });
 
   registerTextDiv.appendChild(registerText);
