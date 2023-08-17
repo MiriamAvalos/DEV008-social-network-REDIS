@@ -67,11 +67,11 @@ export const register = (onNavigate) => {
     addNewUser(usersEmail.value, usersPassword.value).then((userCredential) => {
       onNavigate('/wall');
     }).catch((error) => {
-// Eliminar mensaje de error anterior, si existe
-const textErrorRemove = document.querySelector('.textErrorRegisterLogin');
-if (textErrorRemove) {
-  ErrorRegister.removeChild(textErrorRemove);
-}
+      // Eliminar mensaje de error anterior, si existe
+      const textErrorRemove = document.querySelector('.textErrorRegisterLogin');
+      if (textErrorRemove) {
+        ErrorRegister.removeChild(textErrorRemove);
+      }
 
       const textErrorRegister = document.createElement('p');
       textErrorRegister.classList.add('textErrorRegisterLogin');
@@ -80,13 +80,12 @@ if (textErrorRemove) {
         textErrorRegister.textContent = 'Por favor, ingresa una dirección de correo válida.';
       } else if (error.code === 'auth/weak-password') {
         textErrorRegister.textContent = 'La contraseña debe contener al menos 6 dígitos.';
-      } else if (error.code=== 'auth/missing-password'){
+      } else if (error.code === 'auth/missing-password') {
         textErrorRegister.textContent = 'Ingrese su contraseña.';
       }
       ErrorRegister.appendChild(textErrorRegister);
-      console.log("Error code:", error.code);
+      console.log('Error code:', error.code);
     });
-   
   });
 
   registerTextDiv.appendChild(registerText);
