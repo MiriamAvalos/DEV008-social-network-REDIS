@@ -88,7 +88,7 @@ if (textErrorRemoveLogin) {
         textErrorLogin.textContent = 'Por favor, ingrese su contraseña.';
       }
       ErrorLogin.appendChild(textErrorLogin);
-      console.log("Error code:", error.code);
+      //console.log("Error code:", error.code);
     });
   });
 

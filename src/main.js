@@ -2,14 +2,14 @@
 // rauter , gestiona las rutas
 import { login } from './components/login';
 import { register } from './components/register';
-// import { wall } from './components/wall';
+import { wall } from './components/wall';
 
 const rootDiv = document.getElementById('root');
 // objeto para acceder a todas las rutas
 const routes = {
   '/': login,
   '/register': register,
-  // '/wall': wall,
+ '/wall': wall,
 };
 // onNavigate es una función para cambiar la URL actual del navegador cuando nuestro usuario haga clic , actualiza la URL sin recargar completamente la página.
 // pathname representa la nueva ruta o URL a la que deseamos navegar.
