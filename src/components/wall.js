@@ -20,10 +20,11 @@ export const wall = (onNavigate) => {
   const textArea = document.createElement('textarea');
   textArea.classList.add('textArea');
   const postButton = document.createElement('button');
+  postButton.classList.add('postButton');
 
   textArea.placeholder = '¿Qué quieres compartir?';
   textArea.rows = '7';
-  textArea.cols = '42';
+  textArea.cols = '43';
   // textClose.textContent = 'Cerrar Sesión';
   postButton.textContent = 'Publicar';
 
