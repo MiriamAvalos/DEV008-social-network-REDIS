@@ -1,18 +1,18 @@
 export const wall = (onNavigate) => {
   const wallDiv = document.createElement('div');
   wallDiv.classList.add('wallDiv');
-  const wallNav = document.createElement('nav');
-  wallNav.classList.add('wallNav');
-  const imageLogoNav = document.createElement('img');
-  imageLogoNav.classList.add('imageLogoNav');
-  imageLogoNav.src = '../image/logoWall.png';
+  const wallHeader = document.createElement('header');
+  wallHeader.classList.add('wallHeader');
+  const imageLogoHeader = document.createElement('img');
+  imageLogoHeader.classList.add('imageLogoHeader');
+  imageLogoHeader.src = '../image/logoWall.png';
   const signOutButton = document.createElement('div');
   signOutButton.classList.add('signOutButton');
   const imageClose = document.createElement('img');
   imageClose.classList.add('imageClose');
   imageClose.src = '../image/log-out.png';
-  const textClose = document.createElement('span');
-  textClose.classList.add = ('signOutButton');
+  // const textClose = document.createElement('span');
+  // textClose.classList.add = ('textClose');
   const divPost = document.createElement('div');
   divPost.classList.add('divPost');
   const divPostUserData = document.createElement('div');
@@ -21,29 +21,23 @@ export const wall = (onNavigate) => {
   textArea.classList.add('textArea');
   const postButton = document.createElement('button');
 
-  textClose.textContent = 'Cerrar sesión';
+  textArea.placeholder = '¿Qué quieres compartir?';
+  textArea.rows = '6';
+  textArea.cols = '45';
+  // textClose.textContent = 'Cerrar Sesión';
   postButton.textContent = 'Publicar';
 
-  wallNav.appendChild(imageLogoNav);
+  wallHeader.appendChild(imageLogoHeader);
   signOutButton.appendChild(imageClose);
-  signOutButton.appendChild(textClose);
-  wallNav.appendChild(signOutButton);
+  // signOutButton.appendChild(textClose);
+  wallHeader.appendChild(signOutButton);
   divPost.appendChild(divPostUserData);
   divPost.appendChild(textArea);
   divPost.appendChild(postButton);
-  wallDiv.appendChild(wallNav);
+  wallDiv.appendChild(wallHeader);
   wallDiv.appendChild(divPost);
 
-  /* const signOutButton = document.createElement('button');
-const postButton = document.createElement('button');
-
-postButton.textContent = 'Publicar';
-signOutButton.textContent = 'Cerrar sesión';
-
-  wallDiv.appendChild(signOutButton);
-  wallDiv.appendChild(postButton); */
-
-  textClose.addEventListener('click', () => {
+  signOutButton.addEventListener('click', () => {
     onNavigate('/');
   });
 
