@@ -22,8 +22,8 @@ export const wall = (onNavigate) => {
   const postButton = document.createElement('button');
 
   textArea.placeholder = '¿Qué quieres compartir?';
-  textArea.rows = '6';
-  textArea.cols = '45';
+  textArea.rows = '7';
+  textArea.cols = '42';
   // textClose.textContent = 'Cerrar Sesión';
   postButton.textContent = 'Publicar';
 
