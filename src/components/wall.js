@@ -1,3 +1,5 @@
+import { savePosts, getPosts } from "../lib/configFirestore";
+
 export const wall = (onNavigate) => {
   const wallDiv = document.createElement('div');
   wallDiv.classList.add('wallDiv');
