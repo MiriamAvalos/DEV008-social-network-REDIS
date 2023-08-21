@@ -1,4 +1,4 @@
-import { savePosts, getPosts } from "../lib/configFirestore";
+import { savePosts, getPosts } from '../lib/configFirestore';
 
 export const wall = (onNavigate) => {
   const wallDiv = document.createElement('div');
@@ -13,6 +13,8 @@ export const wall = (onNavigate) => {
   const imageClose = document.createElement('img');
   imageClose.classList.add('imageClose');
   imageClose.src = '../image/log-out.png';
+  // se crea elemento para almacenar los post en tiempo real
+  const postContainer = document.createElement('div');
   // const textClose = document.createElement('span');
   // textClose.classList.add = ('textClose');
   const divPost = document.createElement('div');
@@ -39,6 +41,14 @@ export const wall = (onNavigate) => {
   divPost.appendChild(postButton);
   wallDiv.appendChild(wallHeader);
   wallDiv.appendChild(divPost);
+
+  postButton.addEventListener('click', () => {
+    savePosts(textArea.value).then(() => {
+      alert('Publicación guardada con éxito');
+    }).catch(() => {
+      alert('algo salió mal');
+    });
+  });
 
   signOutButton.addEventListener('click', () => {
     onNavigate('/');
