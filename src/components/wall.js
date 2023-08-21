@@ -22,7 +22,7 @@ export const wall = (onNavigate) => {
   const postButton = document.createElement('button');
   postButton.classList.add('postButton');
 
-  textArea.placeholder = '¿Qué quieres compartir?';
+  textArea.placeholder = '¿Qué vas a compartir hoy?';
   textArea.rows = '7';
   textArea.cols = '43';
   // textClose.textContent = 'Cerrar Sesión';
