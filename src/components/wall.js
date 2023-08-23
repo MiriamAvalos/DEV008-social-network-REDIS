@@ -1,4 +1,4 @@
-import { savePosts, getPosts } from '../lib/configFirestore';
+import { savePosts, getAllPosts } from '../lib/configFirestore';
 
 export const wall = (onNavigate) => {
   const wallDiv = document.createElement('div');
@@ -15,6 +15,9 @@ export const wall = (onNavigate) => {
   imageClose.src = '../image/log-out.png';
   // se crea elemento para almacenar los post en tiempo real
   const postContainer = document.createElement('div');
+  postContainer.classList.add('postContainer');
+
+  //Este texto de cerrar sesión es para el responsive en web
   // const textClose = document.createElement('span');
   // textClose.classList.add = ('textClose');
   const divPost = document.createElement('div');
@@ -41,6 +44,7 @@ export const wall = (onNavigate) => {
   divPost.appendChild(postButton);
   wallDiv.appendChild(wallHeader);
   wallDiv.appendChild(divPost);
+  wallDiv.appendChild(postContainer);
 
   postButton.addEventListener('click', () => {
     savePosts(textArea.value).then(() => {
@@ -49,6 +53,18 @@ export const wall = (onNavigate) => {
       alert('algo salió mal');
     });
   });
+  
+  
+  getAllPosts().then((respuesta) => {
+ console.log(respuesta);
+ respuesta.forEach((element) =>{
+  console.log(element.data());
+
+
+ });
+  });
+
+
 
   signOutButton.addEventListener('click', () => {
     onNavigate('/');
