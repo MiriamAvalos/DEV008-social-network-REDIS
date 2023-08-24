@@ -359,12 +359,13 @@ h3 {
   align-items: center;
   flex-direction: column;
   position:relative;
-  height: 220px;
+  height: 180px;
   width: 360px;
   background-color: rgba(247, 240, 240, 39% );
   border: 1px solid rgba(116, 112, 112, 100% );
   margin-top: 35px;
   border-radius: 10px;
+  padding:10px;
   
 }
 
@@ -376,11 +377,13 @@ h3 {
   flex-direction: column;
   border-radius: 10px; 
   margin-top: 11px;
-  
-  
+ 
 }
 
 .divPostUserData{
+  align-items: center;
+  justify-content: center;
+  
   display:flex;
   flex-direction: column;
   background-color: rgba(111, 185, 76, 71% );
@@ -392,11 +395,12 @@ h3 {
 }
 
 .postButton{
+  cursor:pointer;
   display:flex;
   position:absolute;
   align-items: center;
   justify-content: center;
-  margin-top: 183px;
+  margin-top: 130px;
   left: 276px;
   height: 26px;
   width: 63px; 
@@ -409,3 +413,38 @@ h3 {
   font-weight: lighter;
 }
   
+.divPostUsers{
+ 
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+  position:relative;
+  height: 215px;
+  width: 360px;
+  background-color: rgba(247, 240, 240, 39% );
+  border: 1px solid rgba(116, 112, 112, 100% );
+  margin-top: 35px;
+  border-radius: 10px;
+  
+}
+.contenPost{
+  display:flex;
+padding: 5px;
+justify-content:left;
+flex-direction: column;
+border-radius: 10px; 
+margin-top: 11px;
+border: 1px solid rgba(116, 112, 112, 100% );
+width: 330px;
+height: 100px;
+
+}
+
+.emailUser{
+  font-family: IBMPlexSans-Medium;
+  font-size:medium;
+  font-weight: bolder;
+  
+  
+  
+}

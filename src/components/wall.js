@@ -15,15 +15,14 @@ export const wall = (onNavigate) => {
   imageClose.src = '../image/log-out.png';
   // se crea elemento para almacenar los post en tiempo real
   const postContainer = document.createElement('div');
-  postContainer.classList.add('postContainer');
 
-  //Este texto de cerrar sesión es para el responsive en web
+  // Este texto de cerrar sesión es para el responsive en web
   // const textClose = document.createElement('span');
   // textClose.classList.add = ('textClose');
   const divPost = document.createElement('div');
   divPost.classList.add('divPost');
-  const divPostUserData = document.createElement('div');
-  divPostUserData.classList.add('divPostUserData');
+  /* const divPostUserData = document.createElement('div');
+  divPostUserData.classList.add('divPostUserData'); */
   const textArea = document.createElement('textarea');
   textArea.classList.add('textArea');
   const postButton = document.createElement('button');
@@ -39,7 +38,7 @@ export const wall = (onNavigate) => {
   signOutButton.appendChild(imageClose);
   // signOutButton.appendChild(textClose);
   wallHeader.appendChild(signOutButton);
-  divPost.appendChild(divPostUserData);
+  // divPost.appendChild(divPostUserData);
   divPost.appendChild(textArea);
   divPost.appendChild(postButton);
   wallDiv.appendChild(wallHeader);
@@ -53,18 +52,34 @@ export const wall = (onNavigate) => {
       alert('algo salió mal');
     });
   });
-  
-  
+
+  postContainer.innerHTML = ' ';
   getAllPosts().then((respuesta) => {
- console.log(respuesta);
- respuesta.forEach((element) =>{
-  console.log(element.data());
+    console.log(respuesta);
+    respuesta.forEach((element) => {
+      console.log(element.data());
+      const dataPost = element.data();
+      // se crean tarjetas de post
+      const cardPost = document.createElement('div');
+      cardPost.classList.add('divPostUsers');
+      const cardDiv = document.createElement('div');
+      cardDiv.classList.add('divPostUserData');
+      const emailUser = document.createElement('p');
+      emailUser.textContent = dataPost.email;
+      emailUser.classList.add('emailUser');
+      const contentPost = document.createElement('div');
+      contentPost.classList.add('contenPost');
 
+      const postContentText = document.createElement('p');
+      postContentText.textContent = dataPost.text;
 
- });
+      cardDiv.appendChild(emailUser);
+      contentPost.appendChild(postContentText);
+      cardPost.appendChild(cardDiv);
+      cardPost.appendChild(contentPost);
+      postContainer.appendChild(cardPost);
+    });
   });
-
-
 
   signOutButton.addEventListener('click', () => {
     onNavigate('/');
