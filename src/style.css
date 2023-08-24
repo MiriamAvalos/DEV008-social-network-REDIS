@@ -304,6 +304,7 @@ h3 {
   justify-content: center;
   height: 100%;
   width: 100%;
+  box-shadow:transparent;
 }
 
 .wallHeader{
@@ -421,7 +422,7 @@ h3 {
   position:relative;
   height: 215px;
   width: 360px;
-  background-color: rgba(247, 240, 240, 39% );
+ 
   border: 1px solid rgba(116, 112, 112, 100% );
   margin-top: 35px;
   border-radius: 10px;
@@ -448,3 +449,24 @@ height: 100px;
   
   
 }
+
+.deletePostButton {
+ 
+    cursor:pointer;
+    display:flex;
+    position:absolute;
+    align-items: center;
+    justify-content: center;
+    margin-top: 320px;
+    left: 280px;
+    height: 26px;
+    width: 63px; 
+    border-radius: 5px;
+    border-style:none;
+    font-family: IBMPlexSans-Medium;
+    font-size: 13px;
+    color: #fffafa;
+    font-weight: lighter;
+    background-color: #ce7f46;
+    box-shadow:transparent;
+  }

@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc, getDocs, onSnapshot } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore';
 import { auth, app } from './configFirebase';
 
 // Initialize Cloud Firestore and get a reference to the service
@@ -17,3 +17,9 @@ return getDocs (collection(db, 'post'));
 }
 console.log('Get Posts');
 
+//borrar datos 
+export const deletePost = (id) => {    
+const docRef = doc(db, "post", id)
+return  deleteDoc(docRef);
+
+}

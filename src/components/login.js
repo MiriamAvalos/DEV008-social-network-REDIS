@@ -21,11 +21,15 @@ export const login = (onNavigate) => {
   emaiLogin.classList.add('inputLogin');
   emaiLogin.classList.add('emaiLogin');
   const passwordLogin = document.createElement('input');
+  
   passwordLogin.classList.add('inputLogin');
+  passwordLogin.type = "password";
   passwordLogin.classList.add('passwordLogin');
+  
   const loginButton = document.createElement('button');
   loginButton.classList.add('loginButton');
   const googleButton = document.createElement('button');
+
 
   googleButton.classList.add('googleButton');
   const imageGoogle = document.createElement('img');
@@ -50,11 +54,11 @@ export const login = (onNavigate) => {
   DontHaveAnAccount.textContent = '¿No tienes una cuenta?';
   goToRegister.textContent = 'Registrate';
 
-  // Reemplazar elementos de contraseña por *
+  /* // Reemplazar elementos de contraseña por *
   passwordLogin.addEventListener('keyup', (e) => {
     const valueInputPasswordLogin = e.target.value;
     passwordLogin.value = valueInputPasswordLogin.replace(/\w/g, '•');
-  });
+  }); */
 
   // Se crean los eventos que permitiran la navegación
   goToRegister.addEventListener('click', () => {

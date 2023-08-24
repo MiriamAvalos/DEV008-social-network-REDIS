@@ -9,7 +9,7 @@ const rootDiv = document.getElementById('root');
 const routes = {
   '/': login,
   '/register': register,
- '/wall': wall,
+  '/wall': wall,
 };
 // onNavigate es una función para cambiar la URL actual del navegador cuando nuestro usuario haga clic , actualiza la URL sin recargar completamente la página.
 // pathname representa la nueva ruta o URL a la que deseamos navegar.

@@ -19,6 +19,7 @@ export const register = (onNavigate) => {
   const usersEmail = document.createElement('input');
   usersEmail.classList.add('inputRegister');
   const usersPassword = document.createElement('input');
+
   usersPassword.classList.add('inputRegister');
   const termsDiv = document.createElement('div');
   termsDiv.classList.add('termsDiv');
@@ -41,6 +42,8 @@ export const register = (onNavigate) => {
   registerText.textContent = '¡Regístrate!';
   usersName.placeholder = 'Nombre y Apellidos';
   usersEmail.placeholder = 'Correo Electrónico';
+  usersPassword.type = 'password';
+
   usersPassword.placeholder = 'Contraseña';
   termsCheckbox.type = 'checkbox';
   termsText.textContent = 'Acepto los';
@@ -52,10 +55,10 @@ export const register = (onNavigate) => {
   backToLogin.textContent = ' Inicia sesión';
 
   // Reemplazar elementos de contraseña por *
-  usersPassword.addEventListener('keyup', (e) => {
+  /* usersPassword.addEventListener('keyup', (e) => {
     const valueInputPassword = e.target.value;
     usersPassword.value = valueInputPassword.replace(/\w/g, '•');
-  });
+  }); */
 
   backToLogin.addEventListener('click', () => {
     onNavigate('/');

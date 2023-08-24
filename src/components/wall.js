@@ -1,4 +1,4 @@
-import { savePosts, getAllPosts } from '../lib/configFirestore';
+import { savePosts, getAllPosts, deletePost } from '../lib/configFirestore';
 
 export const wall = (onNavigate) => {
   const wallDiv = document.createElement('div');
@@ -47,12 +47,13 @@ export const wall = (onNavigate) => {
 
   postButton.addEventListener('click', () => {
     savePosts(textArea.value).then(() => {
-      alert('Publicación guardada con éxito');
+      location.reload();
+      //alert('Publicación guardada con éxito');
     }).catch(() => {
       alert('algo salió mal');
     });
   });
-
+  
   postContainer.innerHTML = ' ';
   getAllPosts().then((respuesta) => {
     console.log(respuesta);
@@ -72,12 +73,34 @@ export const wall = (onNavigate) => {
 
       const postContentText = document.createElement('p');
       postContentText.textContent = dataPost.text;
+      const deletePostButton = document.createElement('button');
+      deletePostButton.classList.add('deletePostButton');
+      deletePostButton.textContent = 'Eliminar';
 
+      deletePostButton.addEventListener("click", () => {
+         
+        deletePost(element.id).then(() => {
+          console.log("elemento eliminado: ", element.id)
+          alert('Publicación eliminda');
+          location.reload();
+          //postContainer.innerHTML = " "
+        }).catch(() => {
+          alert('algo salió mal');
+        });
+        
+       // console.log(deletePost());
+
+        //alert(element.id);
+      })
+
+       
       cardDiv.appendChild(emailUser);
       contentPost.appendChild(postContentText);
       cardPost.appendChild(cardDiv);
       cardPost.appendChild(contentPost);
-      postContainer.appendChild(cardPost);
+      postContainer.appendChild(cardPost); 
+      cardDiv.appendChild(deletePostButton);
+      
     });
   });
 
