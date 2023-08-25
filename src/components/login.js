@@ -21,15 +21,13 @@ export const login = (onNavigate) => {
   emaiLogin.classList.add('inputLogin');
   emaiLogin.classList.add('emaiLogin');
   const passwordLogin = document.createElement('input');
-  
+
   passwordLogin.classList.add('inputLogin');
-  passwordLogin.type = "password";
   passwordLogin.classList.add('passwordLogin');
-  
+
   const loginButton = document.createElement('button');
   loginButton.classList.add('loginButton');
   const googleButton = document.createElement('button');
-
 
   googleButton.classList.add('googleButton');
   const imageGoogle = document.createElement('img');
@@ -43,6 +41,7 @@ export const login = (onNavigate) => {
   const goToRegister = document.createElement('a');
   goToRegister.classList.add('goToRegister');
 
+  passwordLogin.type = 'password';
   loginText.textContent = '"Únete a nuestra red de apoyo y reduce el derroche alimentario."';
   sentenceLogin.textContent = '¡Donde come uno, comen dos!';
   emaiLogin.placeholder = 'Correo Electrónico';
