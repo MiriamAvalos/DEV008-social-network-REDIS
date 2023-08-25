@@ -1,4 +1,6 @@
-import { signInUserNew } from '../lib/authUser';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { signInUserNew, singInGoogle } from '../lib/authUser';
+import { auth } from '../lib/configFirebase';
 
 export const login = (onNavigate) => {
   const loginMain = document.createElement('main');
@@ -92,6 +94,24 @@ export const login = (onNavigate) => {
       // console.log("Error code:", error.code);
     });
   });
+
+
+  googleButton.addEventListener("click", (event) => {
+    event.preventDefault();
+ 
+  
+    singInGoogle().then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+    onNavigate('/wall');
+   
+  }).catch(() => {
+      alert('algo salió mal');
+    });
+  
+  });
+    
 
   loginTextDiv.appendChild(loginText);
   formLogin.appendChild(emaiLogin);
