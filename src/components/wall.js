@@ -77,6 +77,7 @@ export const wall = (onNavigate) => {
       emailUser.classList.add('emailUser');
       const photoUserAuth = document.createElement('img');
       photoUserAuth.src = dataPost.img;
+      console.log(photoUserAuth);
       
       photoUserAuth.classList.add('photoUserAuth');
       const contentPost = document.createElement('div');
@@ -87,6 +88,9 @@ export const wall = (onNavigate) => {
 
       const currentUser = getCurrentUser();
       console.log(currentUser);
+
+      console.log(dataPost.img);
+     
 
       if (element.data().email === currentUser) {
         const deletePostButton = document.createElement('button');
@@ -110,32 +114,37 @@ export const wall = (onNavigate) => {
         });
 
       }
+    
       cardDiv.appendChild(photoUserAuth);
       cardDiv.appendChild(emailUser);
       contentPost.appendChild(postContentText);
       cardPost.appendChild(cardDiv);
       cardPost.appendChild(contentPost);
       postContainer.appendChild(cardPost);
+
+
+     // se añade una imagen de perfil por default a usuarios que no se autenticaron con gmail
+      if (dataPost.img === null) {
+        
+        //console.log("estoy adentro del if");
+        
+        const photoUserAuthNull = document.createElement('img');
+        photoUserAuthNull.src = '../image/profile.png';
+        photoUserAuthNull.classList.add('photoUserAuthNull');
+        cardDiv.removeChild(photoUserAuth);
+        cardDiv.appendChild(photoUserAuthNull);
+        
+       };
     });
   });
 
 
 
-  // Función para eliminar cookies manualmente
-function deleteAllCookies() {
-  var cookies = document.cookie.split(";");
-  for (var i = 0; i < cookies.length; i++) {
-    var cookie = cookies[i];
-    var eqPos = cookie.indexOf("=");
-    var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-  }
-}
 
-  //cerrar sesión y eliminar cookies manualmente
+  //cerrar sesión 
   signOutButton.addEventListener('click', () => {
     signOutGoogle().then(() => {
-      deleteAllCookies(); // Eliminar cookies manualmente
+     
       alert("sesión cerrada")
       onNavigate('/');
     }).catch((error) => {

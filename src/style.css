@@ -441,19 +441,50 @@ height: 100px;
 
 }
 
+.photoUserAuth{
+  display:flex;
+  position:absolute;
+  align-items: center;
+  justify-content: center;
+  right: 84%;
+  width: 49px;
+  height: 45px;
+  border-radius: 8%;
+ 
+
+}
+
+
+
 .emailUser{
+  display: flex;
+  position: absolute;
+  right: 5%;
   font-family: IBMPlexSans-Medium;
   font-size:medium;
   font-weight: bolder;
+
   
   
   
 }
 
-.photoUserAuth{
+
+.photoUserAuthNull{
+  display:flex;
+  position:absolute;
+  align-items: center;
+  justify-content: center;
+  right: 84%;
   width: 49px;
-  height: 40px;
+  height: 45px;
+  border-radius: 8%;
+  
+ 
+
+
 }
+
 
 .deletePostButton {
  
