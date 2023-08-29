@@ -1,5 +1,6 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
 import { auth } from './configFirebase';
+
 
 // Autenticación con correo y contraseña
 
@@ -16,8 +17,9 @@ return signInWithEmailAndPassword(auth, email, password);
 const provider = new GoogleAuthProvider();
 export const singInGoogle = () =>{
 return signInWithPopup(auth, provider);
-
 }
+// cerrar sesión
 
-
-
+export const signOutGoogle = () =>{
+return signOut(auth);
+}

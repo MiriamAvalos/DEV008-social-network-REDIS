@@ -64,6 +64,7 @@ export const register = (onNavigate) => {
     onNavigate('/');
   });
 
+
   registerButton.addEventListener('click', (event) => {
     event.preventDefault();
 

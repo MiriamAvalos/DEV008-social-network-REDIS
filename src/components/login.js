@@ -1,6 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import { signInUserNew, singInGoogle } from '../lib/authUser';
-import { auth } from '../lib/configFirebase';
+
 
 export const login = (onNavigate) => {
   const loginMain = document.createElement('main');
