@@ -66,7 +66,7 @@ export const wall = (onNavigate) => {
     respuesta.forEach((element) => {
       // console.log(element.data());
       const dataPost = element.data();
-      console.log(dataPost);
+      //console.log(dataPost);
       // se crean tarjetas de post
       const cardPost = document.createElement('div');
       cardPost.classList.add('divPostUsers');
@@ -77,7 +77,7 @@ export const wall = (onNavigate) => {
       emailUser.classList.add('emailUser');
       const photoUserAuth = document.createElement('img');
       photoUserAuth.src = dataPost.img;
-      console.log(photoUserAuth);
+      //console.log(photoUserAuth);
       
       photoUserAuth.classList.add('photoUserAuth');
       const contentPost = document.createElement('div');
@@ -89,7 +89,7 @@ export const wall = (onNavigate) => {
       const currentUser = getCurrentUser();
       console.log(currentUser);
 
-      console.log(dataPost.img);
+      //console.log(dataPost.img);
      
 
       if (element.data().email === currentUser) {
@@ -135,6 +135,16 @@ export const wall = (onNavigate) => {
         cardDiv.appendChild(photoUserAuthNull);
         
        };
+
+      // si el nombre existe en gmail lo muestra
+      if (dataPost.name !== undefined && dataPost.name !== null ) {
+
+        const nameUserAuthGmail = document.createElement('p'); 
+      nameUserAuthGmail.textContent = dataPost.name;
+      nameUserAuthGmail.classList.add('emailUser');
+      cardDiv.removeChild(emailUser);
+        cardDiv.appendChild(nameUserAuthGmail);
+      }
     });
   });
 
