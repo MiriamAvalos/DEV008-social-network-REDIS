@@ -10,9 +10,19 @@ export const db = getFirestore(app);
 
 
 export const savePosts = (text) => {
-  return addDoc(collection(db, 'post'), { text, email:auth.currentUser.email, img:auth.currentUser.photoURL, name:auth.currentUser.displayName, timestamp: serverTimestamp() , });
+ 
+  
+    
+  return addDoc(collection(db, 'post'), { text, email:auth.currentUser.email, img:auth.currentUser.photoURL, name:auth.currentUser.displayName, timestamp: serverTimestamp() });
   
 };
+
+
+
+
+
+
+
 
 //se obtienen todos los documentos de mi colección
 //db = data base;
