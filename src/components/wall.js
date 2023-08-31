@@ -127,13 +127,18 @@ questionDelete.textContent = '¿Seguro que deseas eliminar esta publicación?';
 
 const finallyDelete = document.createElement('button');
 finallyDelete.classList.add('finallyDelete');
-finallyDelete.textContent = 'Eliminar';
+finallyDelete.textContent = 'Sí';
+
+const cancelDelete = document.createElement('button');
+cancelDelete.classList.add('cancelDelete');
+cancelDelete.textContent = 'No';
 
 
 
 
 
 divModal.appendChild(questionDelete);
+divModal.appendChild(cancelDelete);
 divModal.appendChild(finallyDelete);
 modalDocument.appendChild(divModal);
 
@@ -143,6 +148,11 @@ modalDocument.appendChild(divModal);
 deletePostButton.addEventListener("click", () => {
   modalDocument.showModal();
   
+});
+
+cancelDelete.addEventListener("click", () => {
+  modalDocument.close();
+
 });
  
 finallyDelete.addEventListener('click', () => {
