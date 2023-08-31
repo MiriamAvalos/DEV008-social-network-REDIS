@@ -92,19 +92,65 @@ export const wall = (onNavigate) => {
 
       // console.log(dataPost.img);
 
-      if (element.data().email === currentUser) {
+      if (element.data().email === currentUser ) {
+
+// boton abrir modal
+      
+const deletePostButton = document.createElement('img');
+deletePostButton.src = '../image/delete.png';
+deletePostButton.classList.add('deletePostButton');
+
+cardDiv.appendChild(deletePostButton);
+
+// se crea el modal con su contenido
+
+// Agregar el diálogo al DOM
+
+const modalDocument = document.createElement('dialog');
+modalDocument.classList.add('dialogModal');
+document.body.appendChild(modalDocument);
 
 
-        const deletePostButton = document.createElement('img');
-        deletePostButton.src = '../image/delete.png';
-        deletePostButton.classList.add('deletePostButton');
-        
-        cardDiv.appendChild(deletePostButton);
 
-        deletePostButton.addEventListener('click', () => {
+//contenedor padre de modal
+const divModal = document.createElement('div');
+divModal.classList.add('divModal');
+
+//pregunta
+
+const questionDelete = document.createElement('p');
+questionDelete.classList.add('questionDelete');
+questionDelete.textContent = '¿Seguro que deseas eliminar esta publicación?';
+
+
+//confirmación en este tiene que ir la funcion de eliminar
+
+const finallyDelete = document.createElement('button');
+finallyDelete.classList.add('finallyDelete');
+finallyDelete.textContent = 'Eliminar';
+
+
+
+
+
+divModal.appendChild(questionDelete);
+divModal.appendChild(finallyDelete);
+modalDocument.appendChild(divModal);
+
+
+
+
+deletePostButton.addEventListener("click", () => {
+  modalDocument.showModal();
+  
+});
+ 
+finallyDelete.addEventListener('click', () => {
           deletePost(element.id).then(() => {
+            
+
             console.log('elemento eliminado: ', element.id);
-            alert('Publicación eliminda');
+            //alert('Publicación eliminada');
             location.reload();
           // postContainer.innerHTML = " "
           }).catch(() => {
@@ -115,7 +161,14 @@ export const wall = (onNavigate) => {
 
         // alert(element.id);
         });
+
+        finallyDelete.addEventListener("click", () => {
+          modalDocument.showModal();
+          
+        });
       }
+
+    
 
       cardDiv.appendChild(photoUserAuth);
       cardDiv.appendChild(emailUser);

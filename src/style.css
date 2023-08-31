@@ -519,3 +519,14 @@ padding: 10px;
     font-weight: lighter;
     
   }
+
+
+  /* MODAL   */
+
+  #dialogModal{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+  }

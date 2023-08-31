@@ -78,7 +78,7 @@ export const register = (onNavigate) => {
     email,
     password,
   };
-  localStorage.setItem('user', JSON.stringify(userData));
+  
 
     addNewUser(email, password, name).then((userCredential) => {
       onNavigate('/wall');
