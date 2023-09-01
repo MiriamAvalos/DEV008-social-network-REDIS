@@ -1,7 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import { signInUserNew, singInGoogle } from '../lib/authUser';
 
-
 export const login = (onNavigate) => {
   const loginMain = document.createElement('main');
   loginMain.classList.add('MainComponents');
@@ -95,23 +94,18 @@ export const login = (onNavigate) => {
     });
   });
 
-
-  googleButton.addEventListener("click", (event) => {
+  googleButton.addEventListener('click', (event) => {
     event.preventDefault();
- 
-  
+
     singInGoogle().then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
-    onNavigate('/wall');
-   
-  }).catch(() => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      onNavigate('/wall');
+    }).catch(() => {
       alert('algo salió mal');
     });
-  
   });
-    
 
   loginTextDiv.appendChild(loginText);
   formLogin.appendChild(emaiLogin);
@@ -119,8 +113,6 @@ export const login = (onNavigate) => {
   formLogin.appendChild(loginButton);
   formLogin.appendChild(googleButton);
   googleButton.appendChild(imageGoogle);
-  // insertar primero icono y despues texto, utilice  flex-direction: row-reverse; en CSS pero insertBefore lo resuelve.
-  // googleButton.insertBefore(imageGoogle, googleButton.firstChild);
   footerLogin.appendChild(DontHaveAnAccount);
   footerLogin.appendChild(goToRegister);
   loginMain.appendChild(imageLogin);

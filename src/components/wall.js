@@ -75,9 +75,7 @@ export const wall = (onNavigate) => {
       emailUser.classList.add('emailUser');
       const photoUserAuth = document.createElement('img');
       photoUserAuth.src = dataPost.img;
-      
-     
-  
+
       // console.log(photoUserAuth);
 
       photoUserAuth.classList.add('photoUserAuth');
@@ -92,76 +90,61 @@ export const wall = (onNavigate) => {
 
       // console.log(dataPost.img);
 
-      if (element.data().email === currentUser ) {
+      if (element.data().email === currentUser) {
+        // boton abrir modal
 
-// boton abrir modal
-      
-const deletePostButton = document.createElement('img');
-deletePostButton.src = '../image/delete.png';
-deletePostButton.classList.add('deletePostButton');
+        const deletePostButton = document.createElement('img');
+        deletePostButton.src = '../image/delete.png';
+        deletePostButton.classList.add('deletePostButton');
 
-cardDiv.appendChild(deletePostButton);
+        cardDiv.appendChild(deletePostButton);
 
-// se crea el modal con su contenido
+        // se crea el modal con su contenido
 
-// Agregar el diálogo al DOM
+        // Agregar el diálogo al DOM
 
-const modalDocument = document.createElement('dialog');
-modalDocument.classList.add('dialogModal');
-//se inserta el Modal al documento
-document.body.appendChild(modalDocument);
+        const modalDocument = document.createElement('dialog');
+        modalDocument.classList.add('dialogModal');
+        // se inserta el Modal al documento
+        document.body.appendChild(modalDocument);
 
+        // contenedor padre de modal
+        const divModal = document.createElement('div');
+        divModal.classList.add('divModal');
 
+        // pregunta
 
-//contenedor padre de modal
-const divModal = document.createElement('div');
-divModal.classList.add('divModal');
+        const questionDelete = document.createElement('p');
+        questionDelete.classList.add('questionDelete');
+        questionDelete.textContent = '¿Seguro que deseas eliminar esta publicación?';
 
-//pregunta
+        // confirmación en este tiene que ir la funcion de eliminar
 
-const questionDelete = document.createElement('p');
-questionDelete.classList.add('questionDelete');
-questionDelete.textContent = '¿Seguro que deseas eliminar esta publicación?';
+        const finallyDelete = document.createElement('button');
+        finallyDelete.classList.add('finallyDelete');
+        finallyDelete.textContent = 'Eliminar';
 
+        const cancelDelete = document.createElement('button');
+        cancelDelete.classList.add('cancelDelete');
+        cancelDelete.textContent = 'Cancelar';
 
-//confirmación en este tiene que ir la funcion de eliminar
+        divModal.appendChild(questionDelete);
+        divModal.appendChild(cancelDelete);
+        divModal.appendChild(finallyDelete);
+        modalDocument.appendChild(divModal);
 
-const finallyDelete = document.createElement('button');
-finallyDelete.classList.add('finallyDelete');
-finallyDelete.textContent = 'Eliminar';
+        deletePostButton.addEventListener('click', () => {
+          modalDocument.showModal();
+        });
 
-const cancelDelete = document.createElement('button');
-cancelDelete.classList.add('cancelDelete');
-cancelDelete.textContent = 'Cancelar';
+        cancelDelete.addEventListener('click', () => {
+          modalDocument.close();
+        });
 
-
-
-
-
-divModal.appendChild(questionDelete);
-divModal.appendChild(cancelDelete);
-divModal.appendChild(finallyDelete);
-modalDocument.appendChild(divModal);
-
-
-
-
-deletePostButton.addEventListener("click", () => {
-  modalDocument.showModal();
-  
-});
-
-cancelDelete.addEventListener("click", () => {
-  modalDocument.close();
-
-});
- 
-finallyDelete.addEventListener('click', () => {
+        finallyDelete.addEventListener('click', () => {
           deletePost(element.id).then(() => {
-            
-
             console.log('elemento eliminado: ', element.id);
-            //alert('Publicación eliminada');
+            // alert('Publicación eliminada');
             location.reload();
           // postContainer.innerHTML = " "
           }).catch(() => {
@@ -173,13 +156,10 @@ finallyDelete.addEventListener('click', () => {
         // alert(element.id);
         });
 
-        finallyDelete.addEventListener("click", () => {
+        finallyDelete.addEventListener('click', () => {
           modalDocument.showModal();
-          
         });
       }
-
-    
 
       cardDiv.appendChild(photoUserAuth);
       cardDiv.appendChild(emailUser);
@@ -207,10 +187,7 @@ finallyDelete.addEventListener('click', () => {
         nameUserAuthGmail.classList.add('nameUserAuthGmail');
         cardDiv.removeChild(emailUser);
         cardDiv.appendChild(nameUserAuthGmail);
-      };
-
-      
-     
+      }
     });
   });
 

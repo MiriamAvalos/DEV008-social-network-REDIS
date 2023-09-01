@@ -64,21 +64,19 @@ export const register = (onNavigate) => {
     onNavigate('/');
   });
 
-
   registerButton.addEventListener('click', (event) => {
     event.preventDefault();
 
     const name = usersName.value;
-  const email = usersEmail.value;
-  const password = usersPassword.value;
+    const email = usersEmail.value;
+    const password = usersPassword.value;
 
-  // Almacenar los datos en el localStorage
-  const userData = {
-    name,
-    email,
-    password,
-  };
-  
+    // Almacenar los datos en el localStorage
+    const userData = {
+      name,
+      email,
+      password,
+    };
 
     addNewUser(email, password, name).then((userCredential) => {
       onNavigate('/wall');
