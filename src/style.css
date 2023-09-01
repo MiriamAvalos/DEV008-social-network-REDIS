@@ -514,19 +514,82 @@ padding: 10px;
     border-style:none;
     font-family: IBMPlexSans-Medium;
     font-size: 13px;
-    
-    
     font-weight: lighter;
     
   }
 
-
-  /* MODAL   */
-
-  #dialogModal{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    width: 400px;
-    height: 400px;
+  /* MODAL */
+  .dialogModal{
+    font-family: IBMPlexSans-Medium;
+    font-size: 16px;
+    text-align: center;
+    position:absolute;
+    margin-top: 70%;
+    left: 5%;
+   width: 90%;
+   height: 21%;
+   border-radius: 8px;
+   border: none;
+   padding: 1.5em 1em 1em 1em;
+   background-color: #fafafa;
+   
+   
   }
+
+  dialog::backdrop{
+    background-color:#1413137a;
+   
+}
+
+.divModal{
+ margin:0px; 
+ 
+ 
+}
+.questionDelete{
+  
+   display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0.7em;
+    margin: 0.7em 0;
+    background-color: #fbe9e7;
+    color: #333333;
+    
+    
+    
+
+}
+
+.cancelDelete{
+  margin:5px;
+  width: 110px;
+  height: 35px;
+  border-radius: 20px;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+  background-color: #f1efef;
+  font-family: IBMPlexSans-Medium;
+  letter-spacing:1px;
+  font-weight: bold;
+}
+
+.finallyDelete{
+  margin:5px;
+  width: 110px;
+  height: 35px;
+  border-radius: 20px;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+  background-color: #d32f2f;
+  font-family: IBMPlexSans-Medium;
+  letter-spacing:1px;
+  font-weight: bold;
+}

@@ -108,6 +108,7 @@ cardDiv.appendChild(deletePostButton);
 
 const modalDocument = document.createElement('dialog');
 modalDocument.classList.add('dialogModal');
+//se inserta el Modal al documento
 document.body.appendChild(modalDocument);
 
 
@@ -127,11 +128,11 @@ questionDelete.textContent = '¿Seguro que deseas eliminar esta publicación?';
 
 const finallyDelete = document.createElement('button');
 finallyDelete.classList.add('finallyDelete');
-finallyDelete.textContent = 'Sí';
+finallyDelete.textContent = 'Eliminar';
 
 const cancelDelete = document.createElement('button');
 cancelDelete.classList.add('cancelDelete');
-cancelDelete.textContent = 'No';
+cancelDelete.textContent = 'Cancelar';
 
 
 
