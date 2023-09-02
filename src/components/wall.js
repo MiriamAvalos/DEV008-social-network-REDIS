@@ -145,8 +145,9 @@ export const wall = (onNavigate) => {
           deletePost(element.id).then(() => {
             console.log('elemento eliminado: ', element.id);
             // alert('Publicación eliminada');
-            //location.reload();   recarga la pagina automaticamente pero se modifico porque no funcionaba en vercel
+            location.reload(); 
             onNavigate('/wall');
+            
           // postContainer.innerHTML = " "
           }).catch(() => {
             alert('algo salió mal');
