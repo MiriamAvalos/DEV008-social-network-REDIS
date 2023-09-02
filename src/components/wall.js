@@ -143,10 +143,11 @@ export const wall = (onNavigate) => {
 
         finallyDelete.addEventListener('click', () => {
           deletePost(element.id).then(() => {
-            console.log('elemento eliminado: ', element.id);
-            // alert('Publicación eliminada');
-            location.reload(); 
             onNavigate('/wall');
+            //console.log('elemento eliminado: ', element.id);
+            // alert('Publicación eliminada');
+            //location.reload(); 
+            
             
           // postContainer.innerHTML = " "
           }).catch(() => {
