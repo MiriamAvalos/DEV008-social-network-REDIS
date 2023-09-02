@@ -51,7 +51,7 @@ export const wall = (onNavigate) => {
 
   postButton.addEventListener('click', () => {
     savePosts(textArea.value).then(() => {
-      location.reload();
+      onNavigate('/wall');
       // alert('Publicación guardada con éxito');
     }).catch(() => {
       alert('algo salió mal');
@@ -145,7 +145,8 @@ export const wall = (onNavigate) => {
           deletePost(element.id).then(() => {
             console.log('elemento eliminado: ', element.id);
             // alert('Publicación eliminada');
-            location.reload();
+            //location.reload();   recarga la pagina automaticamente pero se modifico porque no funcionaba en vercel
+            onNavigate('/wall');
           // postContainer.innerHTML = " "
           }).catch(() => {
             alert('algo salió mal');
