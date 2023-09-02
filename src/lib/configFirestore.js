@@ -10,9 +10,6 @@ export const db = getFirestore(app);
 
 
 export const savePosts = (text) => {
- 
-  
-    
   return addDoc(collection(db, 'post'), { text, email:auth.currentUser.email, img:auth.currentUser.photoURL, name:auth.currentUser.displayName, timestamp: serverTimestamp() });
   
 };

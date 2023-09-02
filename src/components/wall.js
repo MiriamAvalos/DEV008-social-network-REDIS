@@ -1,14 +1,18 @@
 import {
-  savePosts, getAllPosts, deletePost, getCurrentUser,
+ savePosts, getAllPosts, deletePost, getCurrentUser,
 } from '../lib/configFirestore';
 
 import { signOutGoogle } from '../lib/authUser';
+import { auth } from '../lib/configFirebase';
+
 
 export const wall = (onNavigate) => {
   const wallDiv = document.createElement('div');
   wallDiv.classList.add('wallDiv');
   const wallHeader = document.createElement('header');
   wallHeader.classList.add('wallHeader');
+
+
   const imageLogoHeader = document.createElement('img');
   imageLogoHeader.classList.add('imageLogoHeader');
   imageLogoHeader.src = '../image/logoWall.png';
@@ -38,16 +42,59 @@ export const wall = (onNavigate) => {
   // textClose.textContent = 'Cerrar Sesión';
   postButton.textContent = 'Publicar';
 
+  
   wallHeader.appendChild(imageLogoHeader);
   signOutButton.appendChild(imageClose);
   // signOutButton.appendChild(textClose);
   wallHeader.appendChild(signOutButton);
   // divPost.appendChild(divPostUserData);
+
+    //Se añade imagen y email de usuarios registrados en Header
+ 
+    const divProfile = document.createElement('div');
+    divProfile.classList.add('divProfile');
+
+    const imageProfileUser = document.createElement('img');
+    imageProfileUser.classList.add('imageProfileUser');
+    imageProfileUser.src = '../image/profileUser.jpg';
+
+    const imageUserLoginHeader = document.createElement('img');
+    imageUserLoginHeader.classList.add('imageUserLoginHeader');
+    imageUserLoginHeader.classList.add('overlay-image');
+    imageUserLoginHeader.src = auth.currentUser.photoURL;
+
+    const nameUserLoginHeader = document.createElement('p');
+    nameUserLoginHeader.classList.add('nameUserLoginHeader');
+    nameUserLoginHeader.classList.add('overlay-image');
+    nameUserLoginHeader.textContent = auth.currentUser.displayName;
+
+
+    wallDiv.appendChild(wallHeader);
+    divProfile.appendChild(imageProfileUser);
+    divProfile.appendChild(imageUserLoginHeader);
+    divProfile.appendChild(nameUserLoginHeader);
+    wallDiv.appendChild(divProfile);
+    wallDiv.appendChild(nameUserLoginHeader);
   divPost.appendChild(textArea);
   divPost.appendChild(postButton);
-  wallDiv.appendChild(wallHeader);
-  wallDiv.appendChild(divPost);
+wallDiv.appendChild(divPost);
   wallDiv.appendChild(postContainer);
+
+
+  //condición si no existe imagen en usuario en usuario, se inserta una por default
+  if (auth.currentUser.photoURL === null) {
+    const imageUserLoginHeaderRegister = document.createElement('img');
+    imageUserLoginHeaderRegister.classList.add('imageUserLoginHeader');
+    imageUserLoginHeaderRegister.classList.add('overlay-image');
+    imageUserLoginHeaderRegister.src = '../image/profile.png';
+    divProfile.removeChild(imageUserLoginHeader);
+    divProfile.appendChild(imageUserLoginHeaderRegister);
+   };
+
+  const currentUser = getCurrentUser();
+  
+  //console.log(currentUser);
+
 
   postButton.addEventListener('click', () => {
     savePosts(textArea.value).then(() => {
@@ -57,14 +104,19 @@ export const wall = (onNavigate) => {
       alert('algo salió mal');
     });
   });
-
+ 
+     
+  
   postContainer.innerHTML = ' ';
   getAllPosts().then((respuesta) => {
+    
     // console.log(respuesta);
     respuesta.forEach((element) => {
       // console.log(element.data());
       const dataPost = element.data();
-      // console.log(dataPost);
+      console.log(dataPost);
+      
+    
       // se crean tarjetas de post
       const cardPost = document.createElement('div');
       cardPost.classList.add('divPostUsers');
@@ -85,8 +137,8 @@ export const wall = (onNavigate) => {
       const postContentText = document.createElement('p');
       postContentText.textContent = dataPost.text;
 
-      const currentUser = getCurrentUser();
-      console.log(currentUser);
+   
+      
 
       // console.log(dataPost.img);
 
@@ -165,12 +217,17 @@ export const wall = (onNavigate) => {
         });
       }
 
+ 
       cardDiv.appendChild(photoUserAuth);
       cardDiv.appendChild(emailUser);
       contentPost.appendChild(postContentText);
       cardPost.appendChild(cardDiv);
       cardPost.appendChild(contentPost);
       postContainer.appendChild(cardPost);
+
+
+  
+   
 
       // se añade una imagen de perfil por default a usuarios que no se autenticaron con gmail
       if (dataPost.img === null) {
@@ -198,7 +255,7 @@ export const wall = (onNavigate) => {
   // cerrar sesión
   signOutButton.addEventListener('click', () => {
     signOutGoogle().then(() => {
-      alert('sesión cerrada');
+      //alert('sesión cerrada');
       onNavigate('/');
     }).catch((error) => {
       alert(`error:${error}`);

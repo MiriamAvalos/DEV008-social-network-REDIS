@@ -298,6 +298,7 @@ h3 {
 /*  WALL  */
 
 .wallDiv{
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -364,7 +365,7 @@ h3 {
   width: 360px;
   background-color: rgba(247, 240, 240, 39% );
   border: 1px solid rgba(116, 112, 112, 100% );
-  margin-top: 35px;
+  margin-top: 16px;
   border-radius: 10px;
   padding:10px;
   
@@ -377,14 +378,19 @@ h3 {
   justify-content: center;
   flex-direction: column;
   border-radius: 10px; 
-  margin-top: 11px;
+  margin-top: 2%;
+  font-weight: bolder;
+  font-family: IBMPlexSans-Medium;
+  height: 75%;
+  width: 100%;
+  font-size: 100%;
+  
  
 }
 
 .divPostUserData{
   align-items: center;
   justify-content: center;
-  
   display:flex;
   flex-direction: column;
   background-color: rgb(111, 216, 97);
@@ -401,7 +407,7 @@ h3 {
   position:absolute;
   align-items: center;
   justify-content: center;
-  margin-top: 130px;
+  margin-top: 37%;
   left: 276px;
   height: 26px;
   width: 63px; 
@@ -424,7 +430,7 @@ h3 {
   width: 360px;
  
   border: 1px solid rgba(116, 112, 112, 100% );
-  margin-top: 35px;
+  margin-top: 30px;
   border-radius: 10px;
   
 }
@@ -521,7 +527,7 @@ padding: 10px;
   /* MODAL */
   .dialogModal{
     font-family: IBMPlexSans-Medium;
-    font-size: 16px;
+    font-size: 100%;
     text-align: center;
     position:absolute;
     margin-top: 70%;
@@ -542,7 +548,7 @@ padding: 10px;
 }
 
 .divModal{
- margin:0px; 
+ margin:0%; 
  
  
 }
@@ -592,4 +598,40 @@ padding: 10px;
   font-family: IBMPlexSans-Medium;
   letter-spacing:1px;
   font-weight: bold;
+}
+
+.imageProfileUser{
+  margin-top: 10px;
+  width: 350px;
+  justify-content: center;
+  justify-items: center;
+  border-radius: 50px;
+}
+
+.imageUserLoginHeader{
+  
+  position:absolute;
+  margin-top: 154px;
+  width: 21%;
+  border-radius: 40px; 
+  left: 37%;
+}
+
+.nameUserLoginHeader{
+  align-items: center;
+  justify-content: center;
+  margin-top: 250px;
+  font-family: IBMPlexSans-Medium;
+  font-size: 12px;
+  font-weight: bold;
+  
+  
+  
+
+}
+
+.overlay-image{
+  position: absolute; /* Coloca la imagen en una posición absoluta en relación con el contenedor */
+  top: 0; /* Ajusta la posición superior según tus necesidades */
+  z-index: 1;
 }
