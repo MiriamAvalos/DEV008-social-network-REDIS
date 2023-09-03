@@ -18,7 +18,7 @@ export const wall = (onNavigate) => {
   signOutButton.classList.add('signOutButton');
   const imageClose = document.createElement('img');
   imageClose.classList.add('imageClose');
-  imageClose.src = '../image/sign-out.png';
+  imageClose.src = '../image/log-out.png';
   // se crea elemento para almacenar los post en tiempo real
   const postContainer = document.createElement('div');
 
