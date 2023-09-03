@@ -601,11 +601,12 @@ padding: 10px;
 }
 
 .imageProfileUser{
+  display:flex;
   margin-top: 10px;
   width: 350px;
   justify-content: center;
-  justify-items: center;
   border-radius: 50px;
+ 
 }
 
 .imageUserLoginHeader{
@@ -618,20 +619,42 @@ padding: 10px;
 }
 
 .nameUserLoginHeader{
+  align-content: center;
+  position: absolute;
   align-items: center;
   justify-content: center;
   margin-top: 250px;
   font-family: IBMPlexSans-Medium;
   font-size: 12px;
   font-weight: bold;
+  left:43%;
+  right: 35%;
+  line-height: 1.5;
   
-  
-  
+}
 
+.emailUserLoginHeaderRegister{
+  
+  position:absolute;
+  text-align: center;
+  margin-top: 250px;
+  font-family: IBMPlexSans-Medium;
+  font-size: 12px;
+  font-weight: bold;
+  left:27%;
+  right: 35%;
+  
 }
 
 .overlay-image{
   position: absolute; /* Coloca la imagen en una posición absoluta en relación con el contenedor */
   top: 0; /* Ajusta la posición superior según tus necesidades */
   z-index: 1;
+}
+
+.overlay-image2{
+  position: absolute; /* Coloca la imagen en una posición absoluta en relación con el contenedor */
+  top: 0; /* Ajusta la posición superior según tus necesidades */
+  z-index: 2;
+
 }
