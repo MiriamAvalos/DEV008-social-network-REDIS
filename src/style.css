@@ -334,8 +334,9 @@ h3 {
   align-items: center;
   position: absolute;
   cursor:pointer;
-  right: 3px;
+  right: 1%;
   height: 30px;
+  
   
   /*font-family: IBMPlexSans-Medium;
   font-weight: bold;
