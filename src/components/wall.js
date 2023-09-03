@@ -51,25 +51,18 @@ export const wall = (onNavigate) => {
   const divProfile = document.createElement('div');
   divProfile.classList.add('divProfile');
 
-  const imageProfileUser = document.createElement('img');
-  imageProfileUser.classList.add('imageProfileUser');
-  imageProfileUser.src = '../image/profileUser.jpg';
-
   const imageUserLoginHeader = document.createElement('img');
   imageUserLoginHeader.classList.add('imageUserLoginHeader');
-  imageUserLoginHeader.classList.add('overlay-image');
   imageUserLoginHeader.src = auth.currentUser.photoURL;
 
   const nameUserLoginHeader = document.createElement('p');
   nameUserLoginHeader.classList.add('nameUserLoginHeader');
-  nameUserLoginHeader.classList.add('overlay-image');
   nameUserLoginHeader.textContent = auth.currentUser.displayName;
 
   wallDiv.appendChild(wallHeader);
-  divProfile.appendChild(imageProfileUser);
   divProfile.appendChild(imageUserLoginHeader);
   divProfile.appendChild(nameUserLoginHeader);
-  wallDiv.appendChild(divProfile);
+  divPost.appendChild(divProfile);
   divPost.appendChild(textArea);
   divPost.appendChild(postButton);
   wallDiv.appendChild(divPost);
