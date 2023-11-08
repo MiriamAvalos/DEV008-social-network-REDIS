@@ -1,11 +1,13 @@
 import {
-  savePosts, getAllPosts, deletePost, getCurrentUser,
-} from '../lib/configFirestore';
-
+  savePosts, getAllPosts, deletePost, getCurrentUser, updatePostInFirestore, } from '../lib/configFirestore';
 import { signOutGoogle } from '../lib/authUser';
 import { auth } from '../lib/configFirebase';
 
 export const wall = (onNavigate) => {
+
+  let isEditing = false;
+  let editTextArea = null;
+
   const wallDiv = document.createElement('div');
   wallDiv.classList.add('wallDiv');
   const wallHeader = document.createElement('header');
@@ -109,8 +111,16 @@ export const wall = (onNavigate) => {
     // console.log(respuesta);
     respuesta.forEach((element) => {
       // console.log(element.data());
+      const postId = element.id; //obtiene el ID único del documento (post)
+      //console.log(postId, "id")
       const dataPost = element.data();
       // console.log(dataPost);
+
+
+ 
+
+
+
 
       // se crean tarjetas de post
       const cardPost = document.createElement('div');
@@ -135,8 +145,66 @@ export const wall = (onNavigate) => {
       // console.log(dataPost.img);
 
       if (element.data().email === currentUser) {
-        // boton abrir modal
 
+       // Botón de editar post solo para usuario que escribió
+       const editPostButton = document.createElement('button');
+       editPostButton.textContent = 'Editar';
+       editPostButton.classList.add('editPostButton');
+       cardDiv.appendChild(editPostButton);
+       
+       function handleEditClick() {
+         if (!isEditing) {
+           isEditing = true;
+           editTextArea = document.createElement('textarea');
+           editTextArea.value = postContentText.textContent;
+           contentPost.replaceChild(editTextArea, postContentText);
+          
+           // Cambiar el botón "Editar" a "Guardar"
+           editPostButton.textContent = 'Guardar';
+       
+           // Agregar un botón de "Cancelar" para cancelar la edición
+           const cancelButton = document.createElement('button');
+           cancelButton.textContent = 'Cancelar';
+           cancelButton.classList.add('cancelEditButton');
+           contentPost.appendChild(cancelButton);
+       
+           // Registrar el evento de clic en el botón "Guardar"
+           editPostButton.addEventListener('click', () => {
+             if (editTextArea) {
+               const updatedText = editTextArea.value;
+               if (postId) {
+                 updatePostInFirestore(postId, updatedText)
+                   .then(() => {
+                     console.log("Publicación actualizada con éxito");
+                     const updatedPostContent = document.createElement('p');
+                     updatedPostContent.textContent = updatedText;
+                     contentPost.replaceWith(updatedPostContent);
+                     editPostButton.textContent = 'Editar';
+                     editTextArea = null; // Restablecer editTextArea
+                     isEditing = false; // Restablecer isEditing
+                   })
+                   .catch((error) => {
+                     console.log("Error al actualizar la publicación", error);
+                     alert("Algo salió mal");
+                   });
+               }
+             }
+           });
+       
+           // Registrar el evento de clic en el botón "Cancelar"
+           cancelButton.addEventListener('click', () => {
+             contentPost.replaceChild(postContentText, editTextArea);
+             contentPost.removeChild(cancelButton);
+             editPostButton.textContent = 'Editar';
+             isEditing = false; // Restablecer isEditing
+             editTextArea = null; // Restablecer editTextArea
+           });
+         }
+       }
+       
+       editPostButton.addEventListener('click', handleEditClick);
+        // boton abrir modal de eliminar post
+    
         const deletePostButton = document.createElement('img');
         deletePostButton.src = '../image/delete.png';
         deletePostButton.classList.add('deletePostButton');
