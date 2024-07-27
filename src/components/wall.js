@@ -156,17 +156,21 @@ export const wall = (onNavigate) => {
           cardDiv.removeChild(deletePostButton);
           contentPost.removeChild(postContentText);
           contentPost.appendChild(textAreaEditar);
+          const contenedorButtonsEditar = document.createElement("div");
+          contenedorButtonsEditar.classList.add("contenedorButtonsEditar");
+
           const guardarPostButton = document.createElement("button");
           guardarPostButton.textContent = "Guardar";
           guardarPostButton.classList.add("guardarPostButton");
-
           const cancelarPostButton = document.createElement("button");
           cancelarPostButton.textContent = "Cancelar";
           cancelarPostButton.classList.add("cancelarPostButton");
 
           cardDiv.removeChild(editPostButton);
-          cardDiv.appendChild(guardarPostButton);
-          cardDiv.appendChild(cancelarPostButton);
+          contenedorButtonsEditar.appendChild(cancelarPostButton);
+          contenedorButtonsEditar.appendChild(guardarPostButton);
+
+          contentPost.appendChild(contenedorButtonsEditar);
 
           cancelarPostButton.addEventListener("click", () => {
             onNavigate("/wall");
