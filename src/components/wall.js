@@ -5,8 +5,7 @@ import { auth } from '../lib/configFirebase';
 
 export const wall = (onNavigate) => {
 
-  let isEditing = false;
-  let editTextArea = null;
+  
 
   const wallDiv = document.createElement('div');
   wallDiv.classList.add('wallDiv');
@@ -87,11 +86,8 @@ export const wall = (onNavigate) => {
     emailUserLoginHeaderRegister.classList.add('emailUserLoginHeaderRegister');
     emailUserLoginHeaderRegister.classList.add('overlay-image2');
     emailUserLoginHeaderRegister.textContent = auth.currentUser.email;
-
     divProfile.removeChild(nameUserLoginHeader);
     divProfile.appendChild(emailUserLoginHeaderRegister);
-    
-
    }
 
   postButton.addEventListener('click', () => {
@@ -117,11 +113,6 @@ export const wall = (onNavigate) => {
       // console.log(dataPost);
 
 
- 
-
-
-
-
       // se crean tarjetas de post
       const cardPost = document.createElement('div');
       cardPost.classList.add('divPostUsers');
@@ -132,106 +123,93 @@ export const wall = (onNavigate) => {
       emailUser.classList.add('emailUser');
       const photoUserAuth = document.createElement('img');
       photoUserAuth.src = dataPost.img;
-
       // console.log(photoUserAuth);
-
       photoUserAuth.classList.add('photoUserAuth');
       const contentPost = document.createElement('div');
       contentPost.classList.add('contenPost');
-
       const postContentText = document.createElement('p');
       postContentText.textContent = dataPost.text;
-
       // console.log(dataPost.img);
 
-      if (element.data().email === currentUser) {
 
+
+      if (element.data().email === currentUser) {
        // Botón de editar post solo para usuario que escribió
        const editPostButton = document.createElement('button');
        editPostButton.textContent = 'Editar';
        editPostButton.classList.add('editPostButton');
        cardDiv.appendChild(editPostButton);
        
-       function handleEditClick() {
-         if (!isEditing) {
-           isEditing = true;
-           editTextArea = document.createElement('textarea');
-           editTextArea.value = postContentText.textContent;
-           contentPost.replaceChild(editTextArea, postContentText);
-          
-           // Cambiar el botón "Editar" a "Guardar"
-           editPostButton.textContent = 'Guardar';
+
+       editPostButton.addEventListener('click', () => handleEditClick(postId, postContentText));
+
+
+      
        
-           // Agregar un botón de "Cancelar" para cancelar la edición
-           const cancelButton = document.createElement('button');
-           cancelButton.textContent = 'Cancelar';
-           cancelButton.classList.add('cancelEditButton');
-           contentPost.appendChild(cancelButton);
-       
-           // Registrar el evento de clic en el botón "Guardar"
-           editPostButton.addEventListener('click', () => {
-             if (editTextArea) {
-               const updatedText = editTextArea.value;
-               if (postId) {
-                 updatePostInFirestore(postId, updatedText)
-                   .then(() => {
-                     console.log("Publicación actualizada con éxito");
-                     const updatedPostContent = document.createElement('p');
-                     updatedPostContent.textContent = updatedText;
-                     contentPost.replaceWith(updatedPostContent);
-                     editPostButton.textContent = 'Editar';
-                     editTextArea = null; // Restablecer editTextArea
-                     isEditing = false; // Restablecer isEditing
-                   })
-                   .catch((error) => {
-                     console.log("Error al actualizar la publicación", error);
-                     alert("Algo salió mal");
-                   });
-               }
-             }
-           });
-       
-           // Registrar el evento de clic en el botón "Cancelar"
-           cancelButton.addEventListener('click', () => {
-             contentPost.replaceChild(postContentText, editTextArea);
-             contentPost.removeChild(cancelButton);
-             editPostButton.textContent = 'Editar';
-             isEditing = false; // Restablecer isEditing
-             editTextArea = null; // Restablecer editTextArea
-           });
-         }
-       }
-       
-       editPostButton.addEventListener('click', handleEditClick);
-        // boton abrir modal de eliminar post
+
+
+
+
+  // Manejar clic en el botón de editar
+  function handleEditClick(postId,  postContentText) {
+    const textAreaEditar = document.createElement('textarea');
+    textAreaEditar.classList.add('editPost');
+    contentPost.removeChild(postContentText);
+    contentPost.appendChild(textAreaEditar);
+    const guardarPostButton = document.createElement('button');
+    guardarPostButton.textContent = 'Guardar';
+    guardarPostButton.classList.add('guardarPostButton');
+
+    const cancelarPostButton = document.createElement('button');
+    cancelarPostButton.textContent = 'Cancelar';
+    cancelarPostButton.classList.add('cancelarPostButton');
     
+    cardDiv.removeChild(editPostButton);
+    cardDiv.appendChild(guardarPostButton);
+    cardDiv.appendChild(cancelarPostButton);
+
+    guardarPostButton.addEventListener('click', () => guardarPost(postId, postContentText));
+    function guardarPost(){
+      updatePostInFirestore(postId, textAreaEditar.value).then(() => {
+
+
+      if(textAreaEditar.value === ""){
+        alert("Por favor, escriba un texto")
+      }else{ 
+
+        contentPost.removeChild(textAreaEditar);
+        postContentText.textContent = textAreaEditar.value;
+        contentPost.appendChild(postContentText);
+        cardDiv.removeChild(guardarPostButton);
+        cardDiv.removeChild(cancelarPostButton);
+        cardDiv.appendChild(editPostButton);
+      }
+      }).catch((error) => {
+        console.error('Error al actualizar publicación:', error);
+      });
+  }
+
+  }
+       
+        // boton abrir modal de eliminar post
         const deletePostButton = document.createElement('img');
         deletePostButton.src = '../image/delete.png';
         deletePostButton.classList.add('deletePostButton');
-
         cardDiv.appendChild(deletePostButton);
-
         // se crea el modal con su contenido
-
         // Agregar el diálogo al DOM
-
         const modalDocument = document.createElement('dialog');
         modalDocument.classList.add('dialogModal');
         // se inserta el Modal al documento
         document.body.appendChild(modalDocument);
-
         // contenedor padre de modal
         const divModal = document.createElement('div');
         divModal.classList.add('divModal');
-
         // pregunta
-
         const questionDelete = document.createElement('p');
         questionDelete.classList.add('questionDelete');
         questionDelete.textContent = '¿Seguro que deseas eliminar esta publicación?';
-
         // confirmación en este tiene que ir la funcion de eliminar
-
         const finallyDelete = document.createElement('button');
         finallyDelete.classList.add('finallyDelete');
         finallyDelete.textContent = 'Eliminar';
@@ -275,6 +253,14 @@ export const wall = (onNavigate) => {
           modalDocument.showModal();
         });
       }
+
+
+
+
+
+
+
+
 
       cardDiv.appendChild(photoUserAuth);
       cardDiv.appendChild(emailUser);

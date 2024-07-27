@@ -448,6 +448,10 @@ padding: 10px;
 
 }
 
+.editPost{
+  width: 100%;
+}
+
 .photoUserAuth{
   display:flex;
   position:absolute;
