@@ -110,7 +110,7 @@ export const wall = (onNavigate) => {
       const postId = element.id; //obtiene el ID único del documento (post)
       //console.log(postId, "id")
       const dataPost = element.data();
-      // console.log(dataPost);
+       console.log(dataPost);
 
 
       // se crean tarjetas de post
@@ -154,6 +154,9 @@ export const wall = (onNavigate) => {
   function handleEditClick(postId,  postContentText) {
     const textAreaEditar = document.createElement('textarea');
     textAreaEditar.classList.add('editPost');
+    textAreaEditar.textContent =  dataPost.text;
+   
+    
     contentPost.removeChild(postContentText);
     contentPost.appendChild(textAreaEditar);
     const guardarPostButton = document.createElement('button');
@@ -171,19 +174,14 @@ export const wall = (onNavigate) => {
     guardarPostButton.addEventListener('click', () => guardarPost(postId, postContentText));
     function guardarPost(){
       updatePostInFirestore(postId, textAreaEditar.value).then(() => {
-
-
-      if(textAreaEditar.value === ""){
-        alert("Por favor, escriba un texto")
-      }else{ 
-
-        contentPost.removeChild(textAreaEditar);
-        postContentText.textContent = textAreaEditar.value;
-        contentPost.appendChild(postContentText);
-        cardDiv.removeChild(guardarPostButton);
-        cardDiv.removeChild(cancelarPostButton);
-        cardDiv.appendChild(editPostButton);
-      }
+        
+        savePosts(textAreaEditar.value).then(() => {
+          onNavigate('/wall');
+          // alert('Publicación guardada con éxito');
+        }).catch(() => {
+          alert('algo salió mal');
+        });
+      
       }).catch((error) => {
         console.error('Error al actualizar publicación:', error);
       });
