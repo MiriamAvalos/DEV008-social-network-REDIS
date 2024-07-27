@@ -3,6 +3,7 @@
 import { login } from './components/login';
 import { register } from './components/register';
 import { wall } from './components/wall';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const rootDiv = document.getElementById('root');
 // objeto para acceder a todas las rutas

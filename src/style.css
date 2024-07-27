@@ -510,24 +510,22 @@ padding: 10px;
 
 }
 
+.editPostButton{
+  display: flex;
+  position:absolute;
+  cursor:pointer;
+  align-items: center;
+  justify-content: center;
+  left: 18.5rem;
+}
 
 .deletePostButton {
- 
     cursor:pointer;
     display:flex;
     position:absolute;
     align-items: center;
     justify-content: center;
-    margin-top: 0px;
-    left: 318px;
-    height: 27px;
-    width: 27px; 
-    border-radius: 5px;
-    border-style:none;
-    font-family: IBMPlexSans-Medium;
-    font-size: 13px;
-    font-weight: lighter;
-    
+    left: 20rem;
   }
 
   /* MODAL */
