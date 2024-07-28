@@ -128,21 +128,38 @@ export const wall = (onNavigate) => {
       photoUserAuth.src = dataPost.img;
       // console.log(photoUserAuth);
       photoUserAuth.classList.add("photoUserAuth");
+
+      const contenedorLikes = document.createElement("div");
+      contenedorLikes.classList.add("contenedorLikes");
+     
+
       const contentPost = document.createElement("div");
       contentPost.classList.add("contenPost");
       const postContentText = document.createElement("p");
       postContentText.textContent = dataPost.text;
       // console.log(dataPost.img);
+       //agregar like
+ const likePost = document.createElement("i");
+ likePost.classList.add("fa-regular", "fa-heart");
+ likePost.classList.add("likePost");
+ const numLikes = document.createElement("span");
+numLikes.textContent = ("post.likes");
+//numLikes.textContent = post.likes;
+ numLikes.classList.add("numLikes");
+  
+contenedorLikes.addEventListener("click", () =>
+  handleEditClickLike(postId, likePost, numLikes)
+);
+ 
 
-      if (element.data().email === currentUser) {
+      if(element.data().email === currentUser) {
         // Botón de editar post solo para usuario que escribió
 
         const editPostButton = document.createElement("i");
         editPostButton.classList.add("fa-solid", "fa-pen-to-square");
         editPostButton.classList.add("editPostButton");
-
         cardDiv.appendChild(editPostButton);
-
+  
         editPostButton.addEventListener("click", () =>
           handleEditClick(postId, postContentText)
         );
@@ -263,6 +280,10 @@ export const wall = (onNavigate) => {
       cardDiv.appendChild(emailUser);
       contentPost.appendChild(postContentText);
       cardPost.appendChild(cardDiv);
+      
+ contenedorLikes.appendChild(likePost);
+ contenedorLikes.appendChild(numLikes);
+      contentPost.appendChild(contenedorLikes);
       cardPost.appendChild(contentPost);
       postContainer.appendChild(cardPost);
 

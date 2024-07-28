@@ -429,6 +429,22 @@ h3 {
   width: 100%;
 }
 
+.contenedorLikes{
+ display: flex;
+ margin-top: 27px;
+ width: 5%;
+ position: relative;
+ left: 19rem;
+ 
+}
+.likePost{
+  cursor: pointer;
+}
+.numLikes{
+  display: flex;
+  position: relative;
+  left: 5px;
+}
 .photoUserAuth {
   display: flex;
   position: absolute;
