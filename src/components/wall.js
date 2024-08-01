@@ -4,44 +4,44 @@ import {
   deletePost,
   getCurrentUser,
   updatePostInFirestore,
-} from "../lib/configFirestore";
-import { signOutGoogle } from "../lib/authUser";
-import { auth } from "../lib/configFirebase";
+} from '../lib/configFirestore';
+import { signOutGoogle } from '../lib/authUser';
+import { auth } from '../lib/configFirebase';
 
 export const wall = (onNavigate) => {
-  const wallDiv = document.createElement("div");
-  wallDiv.classList.add("wallDiv");
-  const wallHeader = document.createElement("header");
-  wallHeader.classList.add("wallHeader");
+  const wallDiv = document.createElement('div');
+  wallDiv.classList.add('wallDiv');
+  const wallHeader = document.createElement('header');
+  wallHeader.classList.add('wallHeader');
 
-  const imageLogoHeader = document.createElement("img");
-  imageLogoHeader.classList.add("imageLogoHeader");
-  imageLogoHeader.src = "../image/logoWall.png";
-  const signOutButton = document.createElement("div");
-  signOutButton.classList.add("signOutButton");
-  const imageClose = document.createElement("img");
-  imageClose.classList.add("imageClose");
-  imageClose.src = "../image/log-out.png";
+  const imageLogoHeader = document.createElement('img');
+  imageLogoHeader.classList.add('imageLogoHeader');
+  imageLogoHeader.src = '../image/logoWall.png';
+  const signOutButton = document.createElement('div');
+  signOutButton.classList.add('signOutButton');
+  const imageClose = document.createElement('img');
+  imageClose.classList.add('imageClose');
+  imageClose.src = '../image/log-out.png';
   // se crea elemento para almacenar los post en tiempo real
-  const postContainer = document.createElement("div");
+  const postContainer = document.createElement('div');
 
   // Este texto de cerrar sesión es para el responsive en web
   // const textClose = document.createElement('span');
   // textClose.classList.add = ('textClose');
-  const divPost = document.createElement("div");
-  divPost.classList.add("divPost");
+  const divPost = document.createElement('div');
+  divPost.classList.add('divPost');
   /* const divPostUserData = document.createElement('div');
   divPostUserData.classList.add('divPostUserData'); */
-  const textArea = document.createElement("textarea");
-  textArea.classList.add("textArea");
-  const postButton = document.createElement("button");
-  postButton.classList.add("postButton");
+  const textArea = document.createElement('textarea');
+  textArea.classList.add('textArea');
+  const postButton = document.createElement('button');
+  postButton.classList.add('postButton');
 
-  textArea.placeholder = "¿Qué vas a compartir hoy?";
-  textArea.rows = "7";
-  textArea.cols = "43";
+  textArea.placeholder = '¿Qué vas a compartir hoy?';
+  textArea.rows = '7';
+  textArea.cols = '43';
   // textClose.textContent = 'Cerrar Sesión';
-  postButton.textContent = "Publicar";
+  postButton.textContent = 'Publicar';
 
   wallHeader.appendChild(imageLogoHeader);
   signOutButton.appendChild(imageClose);
@@ -51,15 +51,15 @@ export const wall = (onNavigate) => {
 
   // Se añade imagen y email de usuarios registrados en Header
 
-  const divProfile = document.createElement("div");
-  divProfile.classList.add("divProfile");
+  const divProfile = document.createElement('div');
+  divProfile.classList.add('divProfile');
 
-  const imageUserLoginHeader = document.createElement("img");
-  imageUserLoginHeader.classList.add("imageUserLoginHeader");
+  const imageUserLoginHeader = document.createElement('img');
+  imageUserLoginHeader.classList.add('imageUserLoginHeader');
   imageUserLoginHeader.src = auth.currentUser.photoURL;
 
-  const nameUserLoginHeader = document.createElement("p");
-  nameUserLoginHeader.classList.add("nameUserLoginHeader");
+  const nameUserLoginHeader = document.createElement('p');
+  nameUserLoginHeader.classList.add('nameUserLoginHeader');
   nameUserLoginHeader.textContent = auth.currentUser.displayName;
 
   wallDiv.appendChild(wallHeader);
@@ -73,40 +73,40 @@ export const wall = (onNavigate) => {
 
   // condición si no existe en usuario
   if (auth.currentUser.photoURL === null) {
-    const imageUserLoginHeaderRegister = document.createElement("img");
-    imageUserLoginHeaderRegister.classList.add("imageUserLoginHeader");
-    imageUserLoginHeaderRegister.classList.add("overlay-image");
-    imageUserLoginHeaderRegister.src = "../image/profile.png";
+    const imageUserLoginHeaderRegister = document.createElement('img');
+    imageUserLoginHeaderRegister.classList.add('imageUserLoginHeader');
+    imageUserLoginHeaderRegister.classList.add('overlay-image');
+    imageUserLoginHeaderRegister.src = '../image/profile.png';
     divProfile.removeChild(imageUserLoginHeader);
     divProfile.appendChild(imageUserLoginHeaderRegister);
   }
 
   //si el usuario tiene un nombre nullo, se inserta su correo
   if (auth.currentUser.displayName === null) {
-    const emailUserLoginHeaderRegister = document.createElement("p");
+    const emailUserLoginHeaderRegister = document.createElement('p');
 
-    emailUserLoginHeaderRegister.classList.add("emailUserLoginHeaderRegister");
-    emailUserLoginHeaderRegister.classList.add("overlay-image2");
+    emailUserLoginHeaderRegister.classList.add('emailUserLoginHeaderRegister');
+    emailUserLoginHeaderRegister.classList.add('overlay-image2');
     emailUserLoginHeaderRegister.textContent = auth.currentUser.email;
     divProfile.removeChild(nameUserLoginHeader);
     divProfile.appendChild(emailUserLoginHeaderRegister);
   }
 
-  postButton.addEventListener("click", () => {
+  postButton.addEventListener('click', () => {
     savePosts(textArea.value)
       .then(() => {
-        onNavigate("/wall");
+        onNavigate('/wall');
         // alert('Publicación guardada con éxito');
       })
       .catch(() => {
-        alert("algo salió mal");
+        alert('algo salió mal');
       });
   });
 
   const currentUser = getCurrentUser();
   // console.log(currentUser);
 
-  postContainer.innerHTML = " ";
+  postContainer.innerHTML = '';
   getAllPosts().then((respuesta) => {
     // console.log(respuesta);
     respuesta.forEach((element) => {
@@ -117,71 +117,68 @@ export const wall = (onNavigate) => {
       console.log(dataPost);
 
       // se crean tarjetas de post
-      const cardPost = document.createElement("div");
-      cardPost.classList.add("divPostUsers");
-      const cardDiv = document.createElement("div");
-      cardDiv.classList.add("divPostUserData");
-      const emailUser = document.createElement("p");
+      const cardPost = document.createElement('div');
+      cardPost.classList.add('divPostUsers');
+      const cardDiv = document.createElement('div');
+      cardDiv.classList.add('divPostUserData');
+      const emailUser = document.createElement('p');
       emailUser.textContent = dataPost.email;
-      emailUser.classList.add("emailUser");
-      const photoUserAuth = document.createElement("img");
+      emailUser.classList.add('emailUser');
+      const photoUserAuth = document.createElement('img');
       photoUserAuth.src = dataPost.img;
       // console.log(photoUserAuth);
-      photoUserAuth.classList.add("photoUserAuth");
+      photoUserAuth.classList.add('photoUserAuth');
 
-      const contenedorLikes = document.createElement("div");
-      contenedorLikes.classList.add("contenedorLikes");
-     
+      const contenedorLikes = document.createElement('div');
+      contenedorLikes.classList.add('contenedorLikes');
 
-      const contentPost = document.createElement("div");
-      contentPost.classList.add("contenPost");
-      const postContentText = document.createElement("p");
+      const contentPost = document.createElement('div');
+      contentPost.classList.add('contenPost');
+      const postContentText = document.createElement('p');
       postContentText.textContent = dataPost.text;
       // console.log(dataPost.img);
-       //agregar like
- const likePost = document.createElement("i");
- likePost.classList.add("fa-regular", "fa-heart");
- likePost.classList.add("likePost");
- const numLikes = document.createElement("span");
-numLikes.textContent = ("post.likes");
-//numLikes.textContent = post.likes;
- numLikes.classList.add("numLikes");
-  
-contenedorLikes.addEventListener("click", () =>
-  handleEditClickLike(postId, likePost, numLikes)
-);
- 
+      //agregar like
+      const likePost = document.createElement('i');
+      likePost.classList.add('fa-regular', 'fa-heart');
+      likePost.classList.add('likePost');
+      const numLikes = document.createElement('span');
+      numLikes.textContent = 'post.likes';
+      //numLikes.textContent = post.likes;
+      numLikes.classList.add('numLikes');
 
-      if(element.data().email === currentUser) {
+      contenedorLikes.addEventListener('click', () =>
+        handleEditClickLike(postId, likePost, numLikes)
+      );
+
+      if (element.data().email === currentUser) {
         // Botón de editar post solo para usuario que escribió
 
-        const editPostButton = document.createElement("i");
-        editPostButton.classList.add("fa-solid", "fa-pen-to-square");
-        editPostButton.classList.add("editPostButton");
+        const editPostButton = document.createElement('i');
+        editPostButton.classList.add('fa-solid', 'fa-pen-to-square');
+        editPostButton.classList.add('editPostButton');
         cardDiv.appendChild(editPostButton);
-  
-        editPostButton.addEventListener("click", () =>
-          handleEditClick(postId, postContentText)
-        );
+
+        editPostButton.addEventListener('click', () => handleEditClick(postId, postContentText));
 
         // Manejar clic en el botón de editar
         function handleEditClick(postId, postContentText) {
-          const textAreaEditar = document.createElement("textarea");
-          textAreaEditar.classList.add("editPost");
+          const textAreaEditar = document.createElement('textarea');
+          textAreaEditar.classList.add('editPost');
           textAreaEditar.textContent = dataPost.text;
 
           cardDiv.removeChild(deletePostButton);
+          contentPost.removeChild(contenedorLikes);
           contentPost.removeChild(postContentText);
           contentPost.appendChild(textAreaEditar);
-          const contenedorButtonsEditar = document.createElement("div");
-          contenedorButtonsEditar.classList.add("contenedorButtonsEditar");
+          const contenedorButtonsEditar = document.createElement('div');
+          contenedorButtonsEditar.classList.add('contenedorButtonsEditar');
 
-          const guardarPostButton = document.createElement("button");
-          guardarPostButton.textContent = "Guardar";
-          guardarPostButton.classList.add("guardarPostButton");
-          const cancelarPostButton = document.createElement("button");
-          cancelarPostButton.textContent = "Cancelar";
-          cancelarPostButton.classList.add("cancelarPostButton");
+          const guardarPostButton = document.createElement('button');
+          guardarPostButton.textContent = 'Guardar';
+          guardarPostButton.classList.add('guardarPostButton');
+          const cancelarPostButton = document.createElement('button');
+          cancelarPostButton.textContent = 'Cancelar';
+          cancelarPostButton.classList.add('cancelarPostButton');
 
           cardDiv.removeChild(editPostButton);
           contenedorButtonsEditar.appendChild(cancelarPostButton);
@@ -280,9 +277,9 @@ contenedorLikes.addEventListener("click", () =>
       cardDiv.appendChild(emailUser);
       contentPost.appendChild(postContentText);
       cardPost.appendChild(cardDiv);
-      
- contenedorLikes.appendChild(likePost);
- contenedorLikes.appendChild(numLikes);
+
+      contenedorLikes.appendChild(likePost);
+      contenedorLikes.appendChild(numLikes);
       contentPost.appendChild(contenedorLikes);
       cardPost.appendChild(contentPost);
       postContainer.appendChild(cardPost);
