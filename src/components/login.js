@@ -2,6 +2,11 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { signInUserNew, singInGoogle } from '../lib/authUser';
 
 export const login = (onNavigate) => {
+  
+  const divContenedorLogin = document.createElement('div');
+  divContenedorLogin.classList.add('divContenedorLogin');
+
+
   const loginMain = document.createElement('main');
   loginMain.classList.add('MainComponents');
 
@@ -121,6 +126,7 @@ export const login = (onNavigate) => {
   loginMain.appendChild(formLogin);
   loginMain.appendChild(ErrorLogin);
   loginMain.appendChild(footerLogin);
+  divContenedorLogin.appendChild(loginMain);
 
-  return loginMain;
+  return divContenedorLogin;
 };

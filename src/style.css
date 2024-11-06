@@ -1,6 +1,5 @@
 * {
   margin: 0;
-
   box-sizing: border-box;
   color: black;
 }
@@ -644,4 +643,178 @@ dialog::backdrop {
   font-family: IBMPlexSans-Medium;
   font-size: medium;
   font-weight: bolder;
+}
+becera*/
+.cabecera__container {
+    display: flex;
+   justify-content: space-around;
+   align-items: center;
+   position: fixed;
+   top: 0;
+}
+
+.cabecera__buscar__item{
+    display: none;
+    
+}
+     /*Menu*/
+.menu__container{
+   position: fixed;
+     /*coloca el contenedor en la parte inferior de la pagina*/
+   bottom: 0%;
+   height: 75px;
+   width: 100%;
+}
+
+.menu__lista{
+    display:flex;
+    /*espacio entre cada uno de los elementos*/
+    justify-content: space-around;
+    height: 100%;
+
+}
+
+.menu__lista li{
+ /*alinear elementos li al centro del contenedor, se aplica a los elementos que deseas alinear, no al padre*/
+    align-self: center;
+}
+
+     /*ocultar elementos de una lista, se especifica el numero de la lista que quiero ocultar*/
+.menu__lista:nth-child(2),
+.menu__lista:nth-child(3),
+.menu__lista:nth-child(4){
+ display: none;
+}
+
+.menu__itens{
+display:flex;
+flex-direction: column;
+gap:5px;
+}
+
+/*seccion superior*/
+.superior__seccion__container{
+    /*un elemento al lado de otro*/
+display: flex;
+    /*alinear elementos al centro del contenedor*/
+align-items: center;
+    /*que el texto no se divida en renglones*/
+    white-space: nowrap;
+        /*agregar un scroll para que se vean los elementos que caben en el conteneor*/
+        overflow: scroll;
+               /*dar espacio entre los elementos hijos para que no esten pegados*/
+               gap: 1em;
+}
+
+
+
+/*Seccion videos*/
+
+.videos__container{
+    display:flex;
+    flex-wrap: wrap; 
+    gap:10px;
+   justify-content: center;
+   
+
+}
+
+.videos__item{
+    height: 303px;
+    width: 280px;
+     /*Para hacer que los elementos se distribuyan en el espacio disponible del contenedor*/
+     flex-wrap: 1;
+}
+
+
+/*rodapie*/
+.rodapie__container{
+    display: flex;
+   /* flex-direction: column;
+    flex-wrap: wrap; */
+    flex-flow: column wrap;
+
+}
+
+@media (min-width:834px) {
+/*cabecera*/
+    .cabecera__buscar__item{
+        display: block;
+    }
+/*rodapie*/
+    .rodapie__container{
+        justify-content: space-between;
+    }
+ 
+    /*menu*/
+
+    .menu__container{
+        left: 0;
+        height: auto;
+        width: 74px;
+       top:80px;
+     }
+
+
+     .menu__lista{
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 15px;
+        gap: 33px;
+      
+     }
+
+     
+@media (min-width:1440px){
+
+    .menu__container{
+        width: 15rem;
+        overflow: scroll;
+    }
+
+
+    .menu__lista:nth-child(2),
+.menu__lista:nth-child(3),
+.menu__lista:nth-child(4){
+ display: flex;
+}
+
+.menu__lista{
+    height: auto;
+    padding: 20px 17px 20px 15px;
+    gap: 1em;
+}
+/*modificar solo el elemento 3 de la lista*/
+.menu__lista:nth-child(3){
+flex-direction: column-reverse;
+}
+
+
+.menu__itens{
+    /*un elemento al lado de otro, ya tiene display flex*/
+    flex-direction: row;
+    gap:1em;
+    align-items: center;
+    }
+
+    /*para ordenar elementos que estan desordenados*/
+.videojuegos{
+    order: 3;
+}
+.peliculas{
+    order: 2;
+}
+.premium{
+    order: 1;
+}
+}
+
+}
+
+@media (min-width: 1024px) {
+  .imageLogin{
+      padding: 3%;
+  }
+
+  
 }
