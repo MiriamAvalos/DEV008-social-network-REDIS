@@ -142,7 +142,7 @@ export const wall = (onNavigate) => {
       likePost.classList.add('fa-regular', 'fa-heart');
       likePost.classList.add('likePost');
       const numLikes = document.createElement('span');
-      numLikes.textContent = 'post.likes';
+      numLikes.textContent = '';
       //numLikes.textContent = post.likes;
       numLikes.classList.add('numLikes');
 
@@ -158,7 +158,9 @@ export const wall = (onNavigate) => {
         editPostButton.classList.add('editPostButton');
         cardDiv.appendChild(editPostButton);
 
-        editPostButton.addEventListener('click', () => handleEditClick(postId, postContentText));
+        editPostButton.addEventListener('click', () =>
+          handleEditClick(postId, postContentText)
+        );
 
         // Manejar clic en el botón de editar
         function handleEditClick(postId, postContentText) {
@@ -186,73 +188,73 @@ export const wall = (onNavigate) => {
 
           contentPost.appendChild(contenedorButtonsEditar);
 
-          cancelarPostButton.addEventListener("click", () => {
-            onNavigate("/wall");
+          cancelarPostButton.addEventListener('click', () => {
+            onNavigate('/wall');
           });
 
-          guardarPostButton.addEventListener("click", () =>
+          guardarPostButton.addEventListener('click', () =>
             guardarPost(postId, postContentText)
           );
           function guardarPost() {
             updatePostInFirestore(postId, textAreaEditar.value)
               .then(() => {
-                onNavigate("/wall");
+                onNavigate('/wall');
               })
               .catch((error) => {
-                console.error("Error al actualizar publicación:", error);
+                console.error('Error al actualizar publicación:', error);
               });
           }
         }
 
         // boton abrir modal de eliminar post
 
-        const deletePostButton = document.createElement("i");
-        deletePostButton.classList.add("fa-solid", "fa-trash-can");
-        deletePostButton.classList.add("deletePostButton");
+        const deletePostButton = document.createElement('i');
+        deletePostButton.classList.add('fa-solid', 'fa-trash-can');
+        deletePostButton.classList.add('deletePostButton');
 
         cardDiv.appendChild(deletePostButton);
 
         // se crea el modal con su contenido
         // Agregar el diálogo al DOM
-        const modalDocument = document.createElement("dialog");
-        modalDocument.classList.add("dialogModal");
+        const modalDocument = document.createElement('dialog');
+        modalDocument.classList.add('dialogModal');
         // se inserta el Modal al documento
         document.body.appendChild(modalDocument);
         // contenedor padre de modal
-        const divModal = document.createElement("div");
-        divModal.classList.add("divModal");
+        const divModal = document.createElement('div');
+        divModal.classList.add('divModal');
         // pregunta
-        const questionDelete = document.createElement("p");
-        questionDelete.classList.add("questionDelete");
+        const questionDelete = document.createElement('p');
+        questionDelete.classList.add('questionDelete');
         questionDelete.textContent =
-          "¿Seguro que deseas eliminar esta publicación?";
+          '¿Seguro que deseas eliminar esta publicación?';
         // confirmación en este tiene que ir la funcion de eliminar
-        const finallyDelete = document.createElement("button");
-        finallyDelete.classList.add("finallyDelete");
-        finallyDelete.textContent = "Eliminar";
+        const finallyDelete = document.createElement('button');
+        finallyDelete.classList.add('finallyDelete');
+        finallyDelete.textContent = 'Eliminar';
 
-        const cancelDelete = document.createElement("button");
-        cancelDelete.classList.add("cancelDelete");
-        cancelDelete.textContent = "Cancelar";
+        const cancelDelete = document.createElement('button');
+        cancelDelete.classList.add('cancelDelete');
+        cancelDelete.textContent = 'Cancelar';
 
         divModal.appendChild(questionDelete);
         divModal.appendChild(cancelDelete);
         divModal.appendChild(finallyDelete);
         modalDocument.appendChild(divModal);
 
-        deletePostButton.addEventListener("click", () => {
+        deletePostButton.addEventListener('click', () => {
           modalDocument.showModal();
         });
 
-        cancelDelete.addEventListener("click", () => {
+        cancelDelete.addEventListener('click', () => {
           modalDocument.close();
         });
 
-        finallyDelete.addEventListener("click", () => {
+        finallyDelete.addEventListener('click', () => {
           deletePost(element.id)
             .then(() => {
               modalDocument.close();
-              onNavigate("/wall");
+              onNavigate('/wall');
               // console.log('elemento eliminado: ', element.id);
               // alert('Publicación eliminada');
               // location.reload();
@@ -260,7 +262,7 @@ export const wall = (onNavigate) => {
               // postContainer.innerHTML = " "
             })
             .catch(() => {
-              alert("algo salió mal");
+              alert('algo salió mal');
             });
 
           // console.log(deletePost());
@@ -268,7 +270,7 @@ export const wall = (onNavigate) => {
           // alert(element.id);
         });
 
-        finallyDelete.addEventListener("click", () => {
+        finallyDelete.addEventListener('click', () => {
           modalDocument.showModal();
         });
       }
@@ -288,9 +290,9 @@ export const wall = (onNavigate) => {
       if (dataPost.img === null) {
         // console.log("estoy adentro del if");
 
-        const photoUserAuthNull = document.createElement("img");
-        photoUserAuthNull.src = "../image/profile.png";
-        photoUserAuthNull.classList.add("photoUserAuthNull");
+        const photoUserAuthNull = document.createElement('img');
+        photoUserAuthNull.src = '../image/profile.png';
+        photoUserAuthNull.classList.add('photoUserAuthNull');
         cardDiv.removeChild(photoUserAuth);
         cardDiv.appendChild(photoUserAuthNull);
       }
@@ -298,9 +300,9 @@ export const wall = (onNavigate) => {
       // si el nombre existe en gmail lo muestra
       console.log(dataPost.name);
       if (dataPost.name !== undefined && dataPost.name !== null) {
-        const nameUserAuthGmail = document.createElement("p");
+        const nameUserAuthGmail = document.createElement('p');
         nameUserAuthGmail.textContent = dataPost.name;
-        nameUserAuthGmail.classList.add("nameUserAuthGmail");
+        nameUserAuthGmail.classList.add('nameUserAuthGmail');
         cardDiv.removeChild(emailUser);
         cardDiv.appendChild(nameUserAuthGmail);
       }
@@ -308,11 +310,11 @@ export const wall = (onNavigate) => {
   });
 
   // cerrar sesión
-  signOutButton.addEventListener("click", () => {
+  signOutButton.addEventListener('click', () => {
     signOutGoogle()
       .then(() => {
         // alert('sesión cerrada');
-        onNavigate("/");
+        onNavigate('/');
       })
       .catch((error) => {
         alert(`error:${error}`);
